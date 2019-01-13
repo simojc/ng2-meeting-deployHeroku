@@ -23,7 +23,7 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-    "@auth0/angular-jwt": "^2.1.0",
+    "@auth0/angular-jwt": "^1.1.0",
     "@dharapvj/ngx-signalr": "^3.0.0",
     "ag-grid": "^17.0.0",
     "ag-grid-angular": "^17.0.0",
