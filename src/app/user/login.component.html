@@ -1,0 +1,54 @@
+<div style="text-align: right;" class="row">
+
+</div>
+
+<br />
+
+<h1>Espace membre</h1>
+<br />
+<p>Vous devez vous enregistrer pour consulter cette section</p>
+<br />  <br />
+<div class="container-fluid">
+
+  <div class="col-md-4">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off">
+      <div class="form-group">
+        <label for="email">Courriel</label>
+        <em *ngIf="loginForm.controls.email?.invalid && (loginForm.controls.email?.touched || mouseoverLogin)">Required</em>
+        <input (ngModel)="email" name="email" required id="email" type="text" class="form-control" placeholder="Courriel..." pattern="[^ @]*@[^ @]*" />
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <em *ngIf="loginForm.controls.password?.invalid &&  (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
+        <input (ngModel)="password" name="password" required id="password" type="password" class="form-control"
+          placeholder="Mot de passe..." />
+      </div>
+      <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Connecter</button>
+      </span>
+      <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+    </form>
+    <br />
+    <div *ngIf="loginInvalid" class="alert alert-danger">
+      Infos de connexion invalides
+    </div>
+
+    <br />
+    <br />
+    <p> Vous n'avez pas de compte ? </p> 
+    <a [routerLink]="['../../user/createuser']"> Inscrivez-vous </a>
+
+ 
+  
+  </div>
+
+
+  <div class="col-md-6">
+    <img src='./assets/images/cheferie.jpeg' />
+  </div>
+
+</div>
+<br />
+<br />
+<br />
+<br />

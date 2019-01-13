@@ -1,0 +1,78 @@
+<!--<div class="panel panel-primary">-->
+<div class="row">
+  <div class="panel-heading">
+    {{ title }}
+  </div>
+
+  <div class=" col-md-6 ">
+    <form [formGroup]="angForm" (ngSubmit)="addEngmtpers(angForm.value)" autocomplete="off">
+      <div class="form-group">
+        <label for="pers_id"> Personne </label>
+        <select class="form-control" formControlName="pers_id" #pers_id>
+          <option *ngFor="let pers of personnes" value={{pers.id}}>
+            {{pers.id}} - {{pers.nom}}  - {{pers.prenom}}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="angForm.controls['pers_id'].invalid && (angForm.controls['pers_id'].dirty || angForm.controls['pers_id'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['pers_id'].errors.required">
+          La personne est obligatoire.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="engmt_id"> Engagement </label>
+        <select class="form-control" formControlName="engmt_id" #engmt_id (change)="selectchange($event)" >
+          <option *ngFor="let engmnt of engmnts" value={{engmnt.id}}>
+            {{engmnt?.id}} - {{engmnt?.nom}}  - {{engmnt?.mont_unit}}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="angForm.controls['engmt_id'].invalid && 
+      (angForm.controls['engmt_id'].dirty || angForm.controls['engmt_id'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['engmt_id'].errors.required">
+          L'engagement est obligatoire.
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-md-4"> Montant de l'engagement </label>
+          <input currencyMask class="form-control" formControlName="mont_unit" #mont_unit readonly />
+        </div>
+        <div class="form-group">
+            <label class="col-md-4"> Montant payé </label>
+            <input currencyMask class="form-control" formControlName="mont" #mont />
+          </div>
+  
+  
+      <div class="form-group">
+        <label class="col-md-4"> exercice </label>
+        <input type="number" min="0" class="form-control" formControlName="exercice" #exercice />
+      </div>
+      <div *ngIf="angForm.controls['exercice'].invalid && (angForm.controls['exercice'].dirty || angForm.controls['exercice'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['exercice'].errors.required">
+          L'exercice est obligatoire.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4"> Statut </label>
+        <input type="text" class="form-control" formControlName="statut" #statut />
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4"> Date changement </label>
+        <input type="text" class="form-control" formControlName="dtchgst" #dtchgst />
+      </div>
+      <div *ngIf="angForm.controls['dtchgst'].invalid && (angForm.controls['dtchgst'].dirty || angForm.controls['dtadh'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['dtchgst'].errors.required">
+          La date du changement est obligatoire.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Ajouter</button>
+        <button type="button" (click)="cancel()" class="btn btn-default">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>

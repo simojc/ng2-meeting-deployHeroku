@@ -1,0 +1,76 @@
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Todjom-Qc</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+
+      <li class="dropdown" >
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Rencontres mensuelles
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+              <li> <a [routerLink]="['reunions/tableau']"> Calendrier </a> </li>
+            <li> <a [routerLink]="['/reunions']" routerLinkActive="active"> Miniatures </a> </li>
+            <!-- <li> <a [routerLink]="['/rpn/new']"> Insscrire RPN </a> </li>
+            <li> <a [routerLink]="['/engmtpers/new']"> Adhésion engagement </a> </li>
+            <li> <a [routerLink]="['/tontpers/new']"> Adhésion tontine </a> </li>
+            <li> <a [routerLink]="['user/home']"> Utilisateurs </a> </li> -->
+          </ul>
+        </li>              
+
+        <li><a [routerLink]="['/ghomala']" routerLinkActive="active"> Ghᴐmala' </a> </li>
+        <li *ngIf="this.currentUser?.admin || auth.isAuthenticated()"> <a [routerLink]="['/membres']" routerLinkActive="active">
+            Liste de membres </a> </li>
+        <li class="dropdown" *ngIf="this.currentUser?.admin || auth.isAuthenticated()">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Administration
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li> <a [routerLink]="['/reunions/new']" routerLinkActive="active"> Créer réunion </a></li>
+            <li> <a [routerLink]="['/membres/new']"> Créer personne</a> </li>
+            <li> <a [routerLink]="['/rpn/new']"> Insscrire RPN </a> </li>
+            <li> <a [routerLink]="['tontpersgrid']"> Tableau des tontines </a> </li>
+            <li> <a [routerLink]="['/engmtpers/new']"> Adhésion engagement </a> </li>
+            <li> <a [routerLink]="['engmtpersgrid']"> Tableau des engagements </a> </li>
+            <li> <a [routerLink]="['/tontpers/new']"> Adhésion tontine </a> </li>
+            <li> <a [routerLink]="['user/home']"> Utilisateurs </a> </li>
+            
+          </ul>
+        </li>
+
+        <li class="dropdown" *ngIf="!!this.currentUser">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Mon dossier
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/engmtpers']" routerLinkActive="active"> Mes engagements </a></li>
+            <li><a [routerLink]="['/tontpers']" routerLinkActive="active"> Mes tontines </a></li>
+            <li><a [routerLink]="['rpn']" routerLinkActive="active"> Mon RPN </a></li>
+            <li><a [routerLink]="['user/profile']"> Mon profil </a> </li>
+            <li>
+              <a (click)="logout()"> Déconnexion </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="navbar-header navbar-right">
+        <ul class="nav navbar-nav">
+          <li *ngIf="!this.currentUser && !auth.isAuthenticated() ">
+            <a [routerLink]="['user/login']">Connexion</a>
+          </li>
+          <li *ngIf="!!this.currentUser || auth.isAuthenticated() ">
+            Bienvenue {{this.currentUser?.email}}
+            <button type="button" class="btn btn-info" style="background-color: transparent">
+              <a (click)="logout()"> Déconnexion </a>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

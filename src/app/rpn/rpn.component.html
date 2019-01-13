@@ -1,0 +1,138 @@
+<div>
+    <div>
+      <h1 class="panel-title"> Les adhésions RPN </h1>
+    </div>
+    <table class="table table-striped table-bordered table-sm" cellspacing="0" width="80%">
+      <thead>
+        <tr>
+          <th> <u> Nom et prénom </u> </th>
+          <th> <u> Matricule RPN </u></th>
+          <th> <u> Date adhésion </u></th>
+          <th> <u> Dépot  </u></th>
+          <th> <u> Dernier MAJ </u></th>
+          <th> <u> Action</u> </th>
+        </tr>
+      </thead>         
+  
+      <tr *ngFor="let item of pagedItems">
+        <td>{{item.nom_pers}}</td>
+        <td>{{item.mtrle}}</td>
+        <td>{{item.dtadh | date: 'dd/MM/yyyy'}}</td>
+        <td>{{item.depot | currency }} </td>
+        <td>{{item.dtmajdpt | date: 'dd/MM/yyyy'}}</td>
+    
+        <td>
+            <div  *ngIf="this.currentUser?.admin" >
+            <a [routerLink]="" (click)="Edit(item.id)"  ><span class="glyphicon glyphicon-edit"></span></a>
+        </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  
+    <!-- pager -->
+    <div align="right">
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)">premier</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)">Précédent</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)">Suivant</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.totalPages)"> Dernier </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div  *ngIf="this.currentUser?.admin" align="left">
+      <button type="button" class="btn btn-primary"
+              (click)="add()">
+        Ajouter
+      </button>
+    </div>
+
+<!-- 
+<body>
+  <div style="padding: 25px">
+ 
+    <div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
+      <data-table id="rpnpers-grid"
+                  headerTitle="Adhésion RPN"
+                  [items]="items"
+                  [itemCount]="itemCount"
+                  (reload)="loadRpnPers()"
+                  (rowClick)="rowClick($event)"
+                  (rowDoubleClick)="rowDoubleClick($event)"
+                  [rowTooltip]="rowTooltip">
+
+        <data-table-column [property]="'nom_pers'"
+                           [header]="'Nom et prénom'"
+                           [sortable]="true"
+                           [resizable]="true">
+        </data-table-column>
+
+        <data-table-column [property]="'mtrle'"
+                           [header]="'Matricule RPN'"
+                           [sortable]="true"
+                           [resizable]="true">
+        </data-table-column>
+        <data-table-column [property]="'dtadh'"
+                           [header]="'Date adhésion'">
+          <ng-template #dataTableCell let-item="item">
+            <span>{{item.dtadh | date:'yyyy-MM-dd'}}</span>
+          </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'depot'"
+                           [header]="'Dépot ($)'"
+                           width="100px">
+        </data-table-column>
+
+        <data-table-column [property]="'dtmajdpt'"
+                           [header]="'Mise à jour'">
+          <ng-template #dataTableCell let-item="item">
+            <span>{{item.dtmajdpt | date:'yyyy-MM-dd'}}</span>
+          </ng-template>
+        </data-table-column>
+
+        <data-table-column [property]="'message'"
+                           [header]="'Message'"
+                           width="220px"
+                           color="#ff0000">
+          <ng-template #dataTableCell let-item="item">
+            <span style="color: rgb(232, 0, 0)"> {{item.message}}</span>
+          </ng-template>
+          <ng-template #dataTableHeader let-item="item">
+            <span style="color: rgb(232, 0, 0)">Message</span>
+          </ng-template>
+        </data-table-column>
+
+        <data-table-column header="Actions">
+          <ng-template #dataTableHeader let-item="item">
+            Actions
+          </ng-template>
+          <ng-template #dataTableCell let-item="item">
+            <button (click)="Edit(item.id)" class="btn btn-sm btn-default">Modifier</button>
+           
+          </ng-template>
+        </data-table-column>
+
+      </data-table>
+    </div>
+    <div  *ngIf="this.currentUser?.admin || auth.isAuthenticated()" align="left">
+      <button type="button" class="btn btn-primary"
+              (click)="add()">
+        Nouvelle adhésion
+      </button>
+    </div>
+
+  </div>
+</body>
+ -->

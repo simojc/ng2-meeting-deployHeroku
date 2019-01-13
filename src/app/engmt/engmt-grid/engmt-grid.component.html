@@ -1,0 +1,83 @@
+
+
+
+<div>
+    <h1 class="panel-title"> Engagements par membre </h1>
+</div>
+
+<form>
+        <div class=" col-md-6 ">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                <input type="text" class="form-control" name="searchString" placeholder=" Chercher par..." [(ngModel)]="searchString">
+            </div>
+        </div>
+    </form>
+
+<div>
+        <br />
+    <table class="table table-striped table-bordered table-sm" cellspacing="0" >
+        <thead>
+            <tr>
+                <th width=20%> <u> Appelation </u></th>
+                <th width=10%><u>Périodicité</u> </th>
+                <th width=10%><u>Nom et prénom</u> </th>
+                <th width=10%> <u> Montant payé </u> </th>
+                <th width=10%> <u> Reste à payer </u> </th>
+                <th width=10%><u>dt_ech</u> </th>
+                <th width=10%><u>statut</u> </th>
+                <th width=10%> <u>Dernier MAJ</u></th>
+            </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let item of pagedItems | filter : 'nom_engmt' : searchString; let i = index ">
+                <td>{{item.nom_engmt }}&nbsp; &nbsp; {{ item.mont_unit | currency}} </td>
+                <td>{{item.periode}} </td>
+                <td>{{item.nom_prenom}} </td>
+                <td>{{item.mont | currency }} </td>   
+                <td>{{item.mont_unit - item.mont | currency }} </td>                                            
+                <td>{{item.dt_ech | date: 'dd/MM/yyyy'}} </td>
+                <td>{{item.statut}} </td>
+                <td>{{item.dtchgst | date: 'dd/MM/yyyy'}}</td>
+                <td>
+                        <div *ngIf="this.currentUser?.admin"  align = "left">
+                          <a  [routerLink]="" (click)="EditEngmnt(item.id)"  ><span class="glyphicon glyphicon-edit"></span></a>
+                        </div>
+                 </td>
+             <!--    <td>
+                    <div *ngIf="this.currentUser?.admin" align="left">
+                        <a [routerLink]="" (click)="editEvnmt(item.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                    </div>
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- pager -->
+    <div align="right">
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(1)">premier</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(pager.currentPage - 1)">Précédent</a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.currentPage + 1)">Suivant</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.totalPages)">Dernier</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- 
+      <tr *ngFor="let item of pagedItems | filter : 'nom' : searchString; let i = index "> 
+
+| dateRange: 'date' : startDate : endDate
+ -->

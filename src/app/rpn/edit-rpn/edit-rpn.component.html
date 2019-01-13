@@ -1,0 +1,122 @@
+<!--<div class="panel panel-primary">-->
+<div class="row">
+  <div class="panel-heading">
+    {{ title }}
+  </div>
+  <hr>
+  <div class="col-md-6" *ngIf="rpnpers">
+    <form [formGroup]="angForm" (ngSubmit)="updateRpnpers(angForm.value)" autocomplete="off">
+
+      <table>
+        <tr>
+
+          <th width=45%></th>
+          <th width=10%></th>
+          <th width=45%></th>
+
+        </tr>
+        <tr>
+          <th>
+
+            <div class="form-group">
+              <label for="pers_id"> Personne </label>
+              <select class="form-control" formControlName="pers_id" #pers_id [(ngModel)]="rpnpers.pers_id">
+                <option *ngFor="let pers of personnes" value={{pers.id}}>
+                  {{pers.id}} - {{pers.nom}} - {{pers.prenom}}
+                </option>
+              </select>
+            </div>
+            <div *ngIf="angForm.controls['pers_id'].invalid && (angForm.controls['pers_id'].dirty || angForm.controls['pers_id'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="angForm.controls['pers_id'].errors.required">
+                La personne est obligatoire.
+              </div>
+            </div>
+          </th>
+          <th></th>
+          <th>
+
+            <div class="form-group">
+              <label for="repdt1_id"> Répondant 1 </label>
+              <select class="form-control" formControlName="repdt1_id" #repdt1_id [(ngModel)]="rpnpers.repdt1_id">
+                <option *ngFor="let pers of personnes" value={{pers.id}}>
+                  {{pers.id}} - {{pers.nom}} - {{pers.prenom}}
+                </option>
+              </select>
+            </div>
+            <div *ngIf="angForm.controls['repdt1_id'].invalid && (angForm.controls['repdt1_id'].dirty || angForm.controls['repdt1_id'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="angForm.controls['repdt1_id'].errors.required">
+                Le Répondant 1 est obligatoire.
+              </div>
+            </div>
+          </th>
+        </tr>
+
+        <tr>
+          <th>
+            <div class="form-group">
+              <label for="repdt2_id"> Répondant 2 </label>
+              <select class="form-control" formControlName="repdt2_id" #repdt2_id [(ngModel)]="rpnpers.repdt2_id">
+                <option *ngFor="let pers of personnes" value={{pers.id}}>
+                  {{pers.id}} - {{pers.nom}} - {{pers.prenom}}
+                </option>
+              </select>
+            </div>
+          </th>
+          <th></th>
+          <th>
+            <div class="form-group">
+              <label class="col-md-6"> Matricule RPN </label>
+              <input type="text" class="form-control" formControlName="mtrle" #mtrle [(ngModel)]="rpnpers.mtrle" />
+            </div>
+            <div *ngIf="angForm.controls['mtrle'].invalid && (angForm.controls['mtrle'].dirty || angForm.controls['mtrle'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="angForm.controls['mtrle'].errors.required">
+                Le matricule est obligatoire.
+              </div>
+            </div>
+          </th>
+        </tr>
+
+        <tr>
+          <th>
+            <div class="form-group">
+              <label class="col-md-10"> Date adhésion (YYYY-MM-DD) </label>
+              <input type="text" class="form-control" formControlName="dtadh" #dtadh [(ngModel)]="rpnpers.dtadh"
+                placeholder="YYYY-MM-DD" />
+            </div>
+            <div *ngIf="angForm.controls['dtadh'].invalid && (angForm.controls['dtadh'].dirty || angForm.controls['dtadh'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="angForm.controls['dtadh'].errors.required">
+                La date d'adhésion est obligatoire.
+              </div>
+            </div>
+          </th>
+          <th></th>
+          <th>
+            <div class="form-group">
+              <label class="col-md-6"> Montant dépôt </label>
+              <input type="text" class="form-control" formControlName="depot" #depot [(ngModel)]="rpnpers.depot" />
+            </div>
+          </th>
+        </tr>
+
+        <tr>
+          <th>
+            <div class="form-group">
+              <label class="col-md-10"> Date MAJ dépôt (YYYY-MM-DD) </label>
+              <input type="text" class="form-control" formControlName="dtmajdpt" #dtadh [(ngModel)]="rpnpers.dtmajdpt"
+                placeholder="YYYY-MM-DD" />
+            </div>
+          </th>
+        </tr>
+      </table>
+
+      <div class="form-group">
+        <button class="btn btn-primary">Enregistrer</button>
+        <button type="button" (click)="cancel()" class="btn btn-default">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>

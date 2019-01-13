@@ -1,0 +1,87 @@
+<!--<div class="panel panel-primary">-->
+  <div class="row">
+    <div class="panel-heading">
+      {{ title }}
+    </div>
+  
+    <div class=" col-md-6 ">
+      <form [formGroup]="angForm" (ngSubmit)="addTontpers(angForm.value)" autocomplete="off">
+  
+        <div class="form-group">
+          <label for="pers_id"> Personne </label>
+          <select class="form-control" formControlName="pers_id" #pers_id>
+            <option *ngFor="let pers of personnes" value={{pers.id}}>
+              {{pers.id}} - {{pers.nom}}  - {{pers.prenom}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="angForm.controls['pers_id'].invalid && (angForm.controls['pers_id'].dirty || angForm.controls['pers_id'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['pers_id'].errors.required">
+            La personne est obligatoire.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="tont_id"> Tontine </label>
+          <select class="form-control" formControlName="tont_id" #tont_id>
+            <option *ngFor="let tont of tontpers" value={{tont.id}}>
+              {{tont.id}} - {{tont.nom}}  - {{tont.descr}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="angForm.controls['tont_id'].invalid && 
+        (angForm.controls['tont_id'].dirty || angForm.controls['tont_id'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['tont_id'].errors.required">
+            La tontine est obligatoire.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label class="col-md-4"> position </label>
+          <input type="text" class="form-control" formControlName="position" #position />
+        </div>
+        <div *ngIf="angForm.controls['position'].invalid && (angForm.controls['position'].dirty || angForm.controls['position'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['position'].errors.required">
+            La position est obligatoire.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label class="col-md-4"> alias du tontineur </label>
+          <input type="text" class="form-control" formControlName="alias" #alias />
+        </div>
+  
+        <div class="form-group">
+          <label class="col-md-4"> Mois gain </label>
+          <input type="text" class="form-control" formControlName="moisgain" #moisgain />
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4"> Statut </label>
+          <input type="text" class="form-control" formControlName="statut" #statut />
+        </div>
+  
+        <div class="form-group">
+          <label class="col-md-4"> Date changement statut </label>
+          <input type="text" class="form-control" formControlName="dt_statut" #dt_statut />
+        </div>
+        <div *ngIf="angForm.controls['dt_statut'].invalid && (angForm.controls['dt_statut'].dirty || angForm.controls['dt_statut'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['dt_statut'].errors.required">
+            La date du changement est obligatoire.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4"> Commentaire </label>
+          <textarea  class="form-control rounded-0" formControlName="comment" #comment  placeholder="commentaires..." rows="3"></textarea>
+        </div>
+
+  
+        <div class="form-group">
+          <button [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Ajouter</button>
+          <button type="button" (click)="cancel()" class="btn btn-default">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

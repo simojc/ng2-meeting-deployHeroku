@@ -1,0 +1,11 @@
+<div class="well hoverwel thumbnail">
+
+  <h3> {{ engmt?.nom_engmt | uppercase}} </h3>
+  <div> Montant: {{ engmt.mont_unit  }} </div>
+  <div> Périodicité: {{ engmt.periodicite }} </div>
+  <div> Échéance: {{ engmt?.dt_ech  | date:'shortDate'}} </div>
+  <div> Période: {{ engmt.periode }} </div>
+  <div> statut: {{ engmt.statut }} </div>
+  <div> Dernier mise à jour: {{ engmt.dtchgst }} </div>
+
+</div>

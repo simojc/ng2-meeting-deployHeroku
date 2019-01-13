@@ -1,0 +1,53 @@
+<!--<div class="panel panel-primary">-->
+
+    <h1>Inscription</h1>
+<hr>
+  <div class="row">
+
+    <div class=" col-md-6 ">
+
+      <form [formGroup]="angForm" (ngSubmit)="addUser(angForm.value)" autocomplete="off">
+
+        <div class="form-group">
+          <label class="col-md-4">Courriel</label>
+          <input type="text" class="form-control" formControlName="email" #email  pattern="[^ @]*@[^ @]*"/>
+        </div>
+        <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['email'].errors.required">
+            Le email courriel obligatoire.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4">Mot de passe</label>
+          <input  type="password" class="form-control" formControlName="password" #password />
+        </div>
+        <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['password'].errors.required">
+            Le mot de passe est obligatoire.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4"> Confirmation du mot de passe</label>
+          <input type="password" class="form-control" formControlName="confirmPassword" #confirmPassword />
+        </div>
+        <p *ngIf=" angForm.controls['confirmPassword']?.errors?.notEquivalent"  > Les mots de passe sont différents </p>
+        <p *ngIf="angForm.controls['confirmPassword']?.errors?.required"> La confirmation du mot de passe est obligatoire</p>
+
+        <div class="form-group">
+            <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+                <button type="submit" [disabled]="angForm.invalid" class="btn btn-primary">Créer</button>
+              </span>
+          <button type="button" (click)="cancel()" class="btn btn-default">Annuler</button>
+        </div>
+      </form>
+
+      <br />
+      <div *ngIf="loginInvalid" class="alert alert-danger">
+        Infos utilisateurs invalides
+      </div>
+
+    </div>
+  </div>
+

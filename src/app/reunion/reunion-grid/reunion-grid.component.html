@@ -1,0 +1,92 @@
+<div>
+    <h1 class="panel-title"> Calendrier des rencontres </h1>
+  
+</div>
+
+<form>
+        <div class="input-group">
+                <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+            
+            <div class=" col-md-4 ">
+                <label for=startDate> Période du : </label>
+                <input type="date"  name="startDate" [(ngModel)]="startDate" >
+            </div>
+            <div class=" col-md-3 ">
+                <label for=startDate> au : </label>
+                <input type="date"  name="endDate" [(ngModel)]="endDate" >
+            </div>
+    </div>
+
+<!--     <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+            <input type="text" class="form-control" name="searchString" placeholder=" Chercher par..." [(ngModel)]="searchString">    
+        </div>
+    </div> -->
+
+</form>
+
+
+<div>
+        <br />
+    <table class="table table-striped table-bordered table-sm" cellspacing="0" >
+        <thead>
+            <tr>
+                <th width=15%> <u> Nom </u></th>
+                <th width=15%> <u> Date </u> </th>
+                <th width=10%><u>Heure</u> </th>
+                <th width=20%><u>Famille accueil</u> </th>
+                <th width=25%><u>Adresse</u> </th>
+                <th width=10%> <u>Action</u></th>
+            </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let item of pagedItems | dateRange: 'date' : startDate : endDate; let i = index ">
+
+                <td>{{item.nom}}</td>
+                <td>{{item.date | date:'fullDate'}}</td>
+                <td>{{item.hrdeb}}</td>
+                <td>{{item.famaccueil}} </td>
+                <td>{{item.address}} {{item.city}} </td>
+                <td>
+                    <a routerLink="/reunions/{{item.id}}">
+                        Voir détails 
+                    </a>
+                </td>
+             <!--    <td>
+                    <div *ngIf="this.currentUser?.admin" align="left">
+                        <a [routerLink]="" (click)="editEvnmt(item.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                    </div>
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- pager -->
+    <div align="right">
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(1)">premier</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(pager.currentPage - 1)">Précédent</a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.currentPage + 1)">Suivant</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.totalPages)">Dernier</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- 
+      <tr *ngFor="let item of pagedItems | filter : 'nom' : searchString; let i = index "> 
+
+| dateRange: 'date' : startDate : endDate
+ -->

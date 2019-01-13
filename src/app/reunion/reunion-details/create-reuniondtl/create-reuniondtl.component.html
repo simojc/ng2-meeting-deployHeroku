@@ -1,0 +1,59 @@
+<div> 
+<h1>Ajout d'un point à l'ordre du jour </h1>
+<hr>
+<div class="col-md-6">
+  <form #newEvnmtdtlForm="ngForm" (ngSubmit)="saveEvnmtdtl(newEvnmtdtlForm.value)" autocomplete="off" novalidate>
+
+    <input id="evnmt_id" name="evnmt_id" type="hidden" [(ngModel)]="evnmtId">
+
+    <div class="form-group" [ngClass]="{'error': newEvnmtdtlForm.controls.ordre?.invalid && newEvnmtdtlForm.controls.ordre?.touched}">
+      <label for="ordre"> Numéro d'ordre:</label>
+      <em *ngIf="newEvnmtdtlForm.controls.ordre?.invalid && (newEvnmtdtlForm.controls.ordre?.touched)">Required</em>
+      <input (ngModel)="evnmtdtl.ordre" name="ordre" required id="ordre" type="number" class="form-control" placeholder="ordre..." />
+    </div>
+
+    <div class="form-group" [ngClass]="{'error': newEvnmtdtlForm.controls.title?.invalid && newEvnmtdtlForm.controls.title?.touched}">
+      <label for="title">Titre:</label>
+      <em *ngIf="newEvnmtdtlForm.controls.title?.invalid && (newEvnmtdtlForm.controls.title?.touched)">Required</em>
+      <input (ngModel)="evnmtdtl.title" name="title" required id="title" type="text" class="form-control" placeholder="Titre..." />
+    </div>
+
+    <div class="form-group" [ngClass]="{'error': newEvnmtdtlForm.controls.resp?.invalid && newEvnmtdtlForm.controls.resp?.touched}">
+      <label for="resp">Responsables:</label>
+      <em *ngIf="newEvnmtdtlForm.controls.resp?.invalid && (newEvnmtdtlForm.controls.resp?.touched)">Required</em>
+      <input (ngModel)="evnmtdtl.resp" name="resp" required id="resp" type="text" class="form-control" placeholder="Responsable..." />
+    </div>
+
+    <div class="form-group" [ngClass]="{'error': newEvnmtdtlForm.controls.duree?.invalid && newEvnmtdtlForm.controls.duree?.touched}">
+      <label for="duree"> Durée (en minutes):</label>
+      <em *ngIf="newEvnmtdtlForm.controls.duree?.invalid && (newEvnmtdtlForm.controls.duree?.touched)">Required</em>
+      <input (ngModel)="evnmtdtl.duree" name="duree" required id="duree" type="number" class="form-control" placeholder="Durée..." />
+    </div>
+
+    <div class="form-group" [ngClass]="{'error': newEvnmtdtlForm.controls.resume?.invalid && newEvnmtdtlForm.controls.resume?.touched}">
+      <label for="resume"> Resumé:</label>
+      <em *ngIf="newEvnmtdtlForm.controls.resume?.invalid && (newEvnmtdtlForm.controls.resume?.touched)">Required</em>
+      <!--<input (ngModel)="resume" name="resume" required id="resume" type="textarea" class="form-control" placeholder="Resumé..." />-->
+      <textarea  (ngModel)="evnmtdtl.resume"
+                name="resume" required id="resume" rows="3" cols="90" >                             
+    </textarea>
+    </div>
+
+    <div class="form-group" [ngClass]="{'error': newEvnmtdtlForm.controls.contenu?.invalid && newEvnmtdtlForm.controls.contenu?.touched}">
+      <label for="contenu"> Détails:</label>
+      <em *ngIf="newEvnmtdtlForm.controls.contenu?.invalid && (newEvnmtdtlForm.controls.contenu?.touched)">Required</em>
+      <!--<input (ngModel)="resume" name="resume" required id="resume" type="textarea" class="form-control" placeholder="Resumé..." />-->
+      <textarea  (ngModel)="evnmtdtl.contenu"
+                name="contenu" required id="contenu" rows="5" cols="90" >                             
+    </textarea>
+    </div>
+
+    <button type="submit" [disabled]="newEvnmtdtlForm.invalid" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+  </form>
+</div>
+
+</div>
+
+
+

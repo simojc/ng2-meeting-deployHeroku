@@ -1,0 +1,52 @@
+<div class="container">
+  <!-- <img [src]="event?.imageUrl" [alt]="event?.name" class="event-image"> -->
+  <div class="row">
+    <div class="col-md-11">
+      <h2>{{evnmt?.nom  | uppercase}} </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div><strong>Date:</strong> {{evnmt?.date | date:'shortDate'}}</div>
+      <div><strong>Heure début:</strong> {{evnmt?.hrdeb}}</div>
+      <!-- <div><strong>Price:</strong> ${{evnmt?.price | currency:'USD':"symbol"}}</div> -->
+      <div><strong>Statut:</strong> {{evnmt.statut}}</div>
+
+      <div><strong>Description:</strong> {{evnmt.descr}}</div>
+    </div>
+    <div class="col-md-6">
+      <address>
+        <strong>Addresse:</strong><br />
+        {{evnmt?.address}}<br />
+        {{evnmt?.city}}, {{evnmt?.country}}
+      </address>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-md-3">
+      <h3 style="margin:0"> Les points de l'ordre du jour </h3>
+    </div>
+    <div class="col-md-5" >
+      <div class="btn-group btn-group-sm" style="margin-right:20px;">
+          <button class="btn btn-default" [class.active]="sortBy==='ordre'" (click)="sortBy='ordre'"> trier par numéro </button>
+         <button class="btn btn-default" [class.active]="sortBy==='title'" (click)="sortBy='title'"> trier par title </button>
+      </div>
+    </div>
+    <div class="col-md-2" *ngIf="(!!this.currentUser || auth.isAuthenticated()) && (this.currentUser.admin)">
+        <a (click)="addEvnmtdtl()"> Ajouter un point </a>
+    </div>
+      
+  </div>
+  <create-reuniondtl *ngIf="addMode"  (saveNewReunionItem)="saveNewReunionItem()" 
+  (cancelAddReunionItem)="cancelAddReunionItem()" [evnmtId]="evnmt?.id"  ></create-reuniondtl>
+  <reuniondtl-list [evnmtId]="evnmt?.id" [sortBy]="sortBy" *ngIf="!addMode" [evnmtdtls]="evnmt?.evnmtdtls"> </reuniondtl-list>
+ 
+</div>
+
+<!-- 
+  Ceci permettra de ne afficher le détail que si le statut de la réunion est P=(passsé, par opposition à À venir)
+  <div *ngIf="evnmt.statut =='Passee'" class="row" style="margin-bottom:10px;"> -->

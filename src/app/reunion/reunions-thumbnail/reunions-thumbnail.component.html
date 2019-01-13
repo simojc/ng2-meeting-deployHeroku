@@ -1,0 +1,21 @@
+<div [routerLink]="['/reunions', evnmt.id]" class="well hoverwel thumbnail">     
+     <div  class="d-inline" > 
+       <h2 > {{ evnmt?.nom }}   </h2>   
+    </div>       
+      <div>
+          <div> Date: {{ evnmt?.date | date:'fullDate'}} </div>      
+          <div> Heure début: {{evnmt.hrdeb }} </div>        
+          <div>  statut: {{evnmt.statut}}  </div>        
+          <!-- <div>  Description: {{evnmt.descr}}  </div> -->        
+          <div>  Famille d'accueil: {{evnmt.famaccueil}}  </div>        
+          <!-- <div> Price: {{ event?.price | currency:'USD':"symbol"}}   <span>&nbsp; </span>  </div> -->        
+          <div *ngIf="evnmt.address">
+              <span> Adresse: {{evnmt.address}}  </span>
+              <span class="pad-left"> {{evnmt.city}}, , {{evnmt.country}}</span>
+          </div>
+          <div style="display: inline-block; text-align: right; width: 100%">
+                <a routerLink="/reunions/{{evnmt.id}}">  <h5> Voir Detail </h5> </a>
+          </div>
+      </div>
+    
+</div>

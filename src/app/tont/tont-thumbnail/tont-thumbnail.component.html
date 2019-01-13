@@ -1,0 +1,48 @@
+ <div class="well hoverwel thumbnail">
+
+    <h2>  {{ tontpers?.descr }}</h2>
+   
+              <div> Début: {{ tontpers.dtdeb | date:'shortDate' }}  &nbsp; &nbsp; &nbsp; &nbsp;
+                  &nbsp; Fin: {{ tontpers.dtfin  | date:'shortDate'}}   </div>
+              
+                  <div> Nom: {{ tontpers.alias  }}  </div>
+                          
+                  <div> Ma position de gain: {{ tontpers.position  }}   
+                    </div>
+                  <div>
+                      Mon mois de gain: {{ tontpers.moisgain  }} 
+                  </div>
+                      <div> Dernière cotisation: {{ tontpers.cot_dern }} </div>
+                      <div> Mon statut: {{ tontpers.statut }} </div>     
+                     <div> Date statut: {{ tontpers?.dt_statut  | date:'shortDate'}} </div>
+             
+  </div> 
+
+
+
+<!-- <div class="well hoverwel thumbnail">
+  <h2>  {{ tontpers?.descr }}</h2>
+  <table>    
+    <tr> 
+    <td>    
+        <h4> 
+            <div> Début: {{ tontpers.dtdeb | date:'shortDate' }}  </div>
+                <div> Alias: {{ tontpers.alias  }} </div>
+                <div> Ma position de gain: {{ tontpers.position  }} </div>                
+          <div> statut: {{ tontpers.statut }} </div>
+        </h4>
+  </td>
+  <td>
+      <h4> 
+        <div> Fin: {{ tontpers.dtfin  | date:'shortDate'}} </div>
+  
+        <div> Dernière cotisation: {{ tontpers.cot_dern }} </div>
+        <div>    Mon mois de gain: {{ tontpers.moisgain  }}   </div>
+         <div> Date changement: {{ tontpers?.dt_statut  | date:'shortDate'}} </div>
+        </h4>
+  </td>
+    </tr> 
+</table>
+</div>
+
+-->

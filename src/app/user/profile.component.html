@@ -1,0 +1,48 @@
+<div>
+  <h1>Mon Profil </h1>
+  <hr>
+  <div *ngIf="!!currentPers">
+    <div>
+      <h3> Nom d'utilisateur et Mot de passe </h3>
+
+      <div> <b> Nom d’utilisateur :</b> {{ currentUser?.email }} </div>
+      <div><b> Mot de passe: </b>{{convertPassword(currentUser?.password)}} &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+        <a [routerLink]="" (click)="Edit(currentUser.id)">
+          Modifier le mot de passe
+        </a>
+      </div>
+
+      <h3> Identification </h3>
+      <div> Prénom et Nom: {{ currentPers && currentPers?.prenom }} {{ currentPers?.nom }} </div>
+      <div> Genre: {{ currentPers?.sexe }} </div>
+
+      <div> Statut Todjom-Qc: {{ currentPers?.type }} </div>
+      <div> Profession : {{ currentPers?.dom_activ }} </div>
+      <div> Emploi : {{ currentPers?.emploi }} </div>
+      <div> Dernier mise à jour: {{ currentPers?.updated_at | date:'fullDate'}} </div>
+
+      <h3> Coordonnées </h3>
+      <table *ngIf="!!currentPers">
+        <tr>
+          <th> Adresse civique: </th>
+          <th> {{ currentPers?.address }} {{ currentPers?.city }} </th>
+        </tr>
+        <tr>
+          <th> Pays: </th>
+          <th> {{ currentPers?.country }} </th>
+        </tr>
+        <tr>
+          <th> Adresse courriel : </th>
+          <th> {{ currentPers?.email }} </th>
+        </tr>
+        <tr>
+          <th> Tél. Mobile : </th>
+          <th> {{ currentPers?.telcel }} </th>
+        </tr>
+        <tr>
+          <th> Tél. Maison : </th>
+          <th> {{ currentPers?.telres }} </th>
+        </tr>
+      </table>
+    </div>
+  </div>
