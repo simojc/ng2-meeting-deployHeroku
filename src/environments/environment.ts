@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   API_URL: 'http://localhost/phpapi/public/api/',
-  // API_URL_NODEJS: 'http://localhost:3003/api/'
+   API_URL_NODEJS: 'http://localhost:3003/api/'
 
-  API_URL_NODEJS: 'https://nodeapiformeeting.herokuapp.com/api/',
+  // API_URL_NODEJS: 'https://nodeapiformeeting.herokuapp.com/api/',
 };

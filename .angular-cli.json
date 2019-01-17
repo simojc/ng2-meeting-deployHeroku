@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "bootstrap.min.css",
         "../node_modules/toastr/build/toastr.min.css",
         "../node_modules/ag-grid/dist/styles/ag-grid.css",
         "../node_modules/ag-grid/dist/styles/ag-theme-fresh.css",
@@ -29,7 +29,7 @@
         "../node_modules/core-js/client/shim.min.js",
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/toastr/build/toastr.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js"
+        "bootstrap.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
