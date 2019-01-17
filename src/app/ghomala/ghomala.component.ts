@@ -1,91 +1,58 @@
 import { Component, OnInit } from '@angular/core';
 
-//import { IUser } from  '../../Models/index'
-//import { UserService } from '../user.service';
-//import { AlertService } from '../../_services/index';
-
 @Component({
-  moduleId: module.id,
-  templateUrl: 'ghomala.component.html',
-  styles: [`
- 
-            body{
-                color:#000000;
-                margin-left:0;
-                margin-right:0;
-                margin-top:0;
-                margin-bottom:0;
-                margin-width:0;
-                margin-height:0;
-                background-color:#A3A6BA;
-            }
-            .text {
-            font-family:Verdana, Arial, Helvetica, sans-serif;
-            font-size:10px;
-            color:541460;
-            padding:5px;
-            }
-                div.container {
-                  width: 100%;
-                  border: 1px solid gray;
-              }
+    moduleId: module.id,
+    templateUrl: 'ghomala.component.html',
+    styles: [`
 
-              header, footer {
-                  padding: 1em;
-                  color: white;
-                  background-color: black;
-                  clear: left;
-                  text-align: center;
-              }
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
 
-              nav {
-                  float: left;
-                  max-width: 160px;
-                  margin: 0;
-                  padding: 1em;
-              }
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
 
-              nav ul {
-                  list-style-type: none;
-                  padding: 0;
-              }
-   
-              nav ul a {
-                  text-decoration: none;
-              }
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
 
-              article {
-                  margin-left: 170px;
-                  border-left: 1px solid gray;
-                  padding: 1em;
-                  overflow: hidden;
-              }
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
 
-              a:hover {
-                cursor:pointer;
-               }
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
 
-               div.a {
-                text-align: center;
-            }
 	`]
 })
 
 export class GhomalaComponent implements OnInit {
-  //currentUser: IUser;
-  //users: IUser[] = [];
-menu: any;
 
-  ngOnInit() {
-    // this.loadAllUsers();
-    this.menu = 1;
-  }
+    menu: any;
 
-onMenuClic(i){
-    this.menu = i;
-}
+    ngOnInit() {
+        this.menu = 1;
+    }
 
-
-
+    onMenuClic(i) {
+        this.menu = i;
+        console.log('this.menu = ' + this.menu);
+    }
 
 }

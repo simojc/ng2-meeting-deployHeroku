@@ -1,285 +1,402 @@
+<div>
 
-<body> 
-    <header>
-        <h1>
-          Ghᴐmala
-        </h1>
-      </header>
-
-  <div class="container">
-
-    <nav class="nav">
-      <ul>
-        <li> 
-        <a id= "1" (click)="onMenuClic(1)"> Aphabet & phonetique  </a>
-        </li>
-        <li> --------------------</li>
-        <li>
-            <a id= "2"  (click)="onMenuClic(2)"> Tons des mots  </a>
-        </li>
-        <li> --------------------</li>
-        <li> <a id= "3" (click)="onMenuClic(3)">  Conjugaison</a></li>
-        <li> --------------------</li>
-        <li>  <a id= "4" (click)="onMenuClic(4)">  Apprendre à compter</a></li>
-        <li> --------------------</li>
-        <li>  <a id= "5" (click)="onMenuClic(5)">  Prier </a></li>
-        <li> --------------------</li>
-        <li> <a id= "6" (click)="onMenuClic(6)">  Chanter</a></li>
-
-      </ul>
-    </nav>
-
-
-    <!--<article class="article">
-      <h1>London</h1>
-      <p>
-        London is the capital city of England. It is the most populous city in the United Kingdom,
-        with a metropolitan area of over 13 million inhabitants.
-      </p>
-      <p>
-        Standing on the River Thames, London has been a major settlement for two millennia,
-        its history going back to its founding by the Romans, who named it Londinium.
-      </p>
-      <p><strong>Resize this page to see what happens!</strong></p>
-    </article>-->
-
-    <article *ngIf="menu==='1'" >
-      <div>
-        <h1>
-          <B>
-            <U>
-              L'alphabet Ghomala'
-            </U>
-          </B>
-        </h1>
-
-      </div>
-
-      <h4>
-        <p>
-          a, á, b, c, d, e, Ə, Ɛ, f, g, gh, h, i, j, k, l, m, n, Ƞ, o, ᴐ, p, S, sh, t, u, ʉ, v, w, wi, y, z, zh, ',
-        </p>
-        <br />
-        <p>
-          Les sons suivants en Ghᴐm á la ' sont transcrits et prononcés différemment du français :
-        </p>
-
-        <ul>
-          <li>
-            <p>
-              C : tch (tchèque)
-            </p>
-          </li>
-          <li>
-            <p>
-              j: dj (John)
-            </p>
-          </li>
-          <li>
-            <p>
-              Ƞ: ng (à la fin d’un mot)
-            </p>
-          </li>
-          <li>
-            <p>
-              [e] : é (thé, démodé, manger, et)
-            </p>
-          </li>
-          <li>
-            <p>
-              [ε] dans : c’était, vêtement, mais
-            </p>
-          </li>
-          <li>
-            <p>
-              [ə] dans : je pense que, devoir
-            </p>
-          </li>
-          <li>
-            <p>
-              sh: ch (chant)
-            </p>
-          </li>
-          <li>
-            <p>
-              ᴐ : (comme le « o » de porte)
-            </p>
-          </li>
-          <li>
-            <p>
-              u: ou (pou)
-            </p>
-          </li>
-          <li>
-            <p>
-              zh: j (jean)
-            </p>
-          </li>
-          <li>
-            <p>
-              (') n’a pas d’équivalent français
-            </p>
-          </li>
-          <li>
-            <p>
-              Le reste de l’alphabet se prononce comme en français.
-            </p>
-          </li>
-        </ul>
-
-      </h4>
-      <hr />
-
-    </article>
-
-      <article *ngIf="menu==='2'" >
-      <div>
-        <h1>
-          <B>
-            <U>
-              Le ton des mots
-            </U>
-          </B>
-        </h1>
-      </div>
-
-      <h4>
-        <ul>
-          <li>
-            <p>
-              « - » ton moyen Exp : shyƏ (eau), pyƏ (nous)
-            </p>
-          </li>
-          <li>
-            <p>
-              « ʹ, Á  » ton haut, Exp : Père = tá, Mère = má
-            </p>
-          </li>
-          <li>
-            <p>
-              «` , Ỳ ,` , à,  ì, » ton bas, Exp : tà (marmite), mà (habitude)
-            </p>
-          </li>
-          <li>
-            <p>
-              « ŭ » ton bas haut Exp : pŭ = la main
-            </p>
-          </li>
-          <li>
-            <p>
-              « ^ » ton haut bas EXP : pû = nous deux
-            </p>
-          </li>
-        </ul>
-      </h4>
-      <hr />
-
-    </article>
-
-
-
-    <article *ngIf="menu==='5'" id="prier" name="prier"  (click)="onMenuClic(5)" class="article"> 
-       <div class="a">  
-          <h1>  NOTRE PÈRE    </h1> 
-          </div>
-        <table> 
-
-          <tr> 
-            <td width=45% >
-                <h2 > Version 1</h2>  
-        <h4> 
-          
-          <p> 
-            Tâ yɔ̄k yə̀ ǒ kɛ̄bə̀ŋ, 
+    <div class="sidenav">
+        <a id="1" [routerLink]="" (click)="onMenuClic(1)"> Aphabet   </a>
+        <a id="2" [routerLink]="" (click)="onMenuClic(2)"> Les tons  </a>
+         <a id="3" [routerLink]="" (click)="onMenuClic(3)">  Conjugaison</a>
+         <a id="4" [routerLink]="" (click)="onMenuClic(4)">  Compter</a>
+         <a id="5" [routerLink]="" (click)="onMenuClic(5)">  Prier </a>
+         <a id="6" [routerLink]="" (click)="onMenuClic(6)">  Chanter</a>
+    </div>
+  
+    <div class="main">
+  
+      <article *ngIf="menu=='1'">
+        <div>
+          <h1>
+            <B>
+              <U>
+                L'alphabet Ghomala'
+              </U>
+            </B>
+          </h1>
+  
+        </div>
+  
+        <h4>
+          <p>
+            a, á, b, c, d, e, Ə, Ɛ, f, g, gh, h, i, j, k, l, m, n, Ƞ, o, ᴐ, p, S, sh, t, u, ʉ, v, w, wi, y, z, zh, ',
           </p>
-          <p> 
-            Á tsô tsǔ pə̄ dɔ̂lɔ̌ 
+          <br />
+          <p>
+            Les sons suivants en Ghᴐm á la ' sont transcrits et prononcés différemment du français :
           </p>
-          <p> 
-            Á nə̀fò tsǔ sɔ́’ɔ̄, 
-          </p>
-          <p> 
-            Á nə́kùŋ ō pə̄ də̀m cā’ā də̀ŋdə̀ŋ pá’ kɛ̄bə̀ŋ á ā 
-          </p>
-          <p> 
-            Hā bí pyə̀ tyə́’ ɔ̄, 
-          </p>
-          <p> 
-            Ywə́tsʉ̂ yɔ̄k nə́ yə̀ŋ tyɛ̄’ɛ̄, 
-          </p>
-          <p> 
-            Wā’ mhɔ̀ mɔ̄k pá’ pyə̄ gə̀ yɔ̄k nə̂ mfə̂ pɔ̄k áā
-          </p>
-          <p>  
-              Kə̂ pīŋ pyə̀ kō nə̂ mlə̀ŋtə̀, 
-            </p>
-            <p> 
-              Tē wɔ̄k nə̂ jyə̀ cwə̀pùŋ 
-            </p>
-            <p> 
-              Nə́kə́lə̄, nə̀fò, tʉ̄ɔ̀, bá ghāmtə̄ bə̄ bû 
-            </p>
-            <p> 
-              Nə́ gùŋ mcwə̀ àwɛ̄ 
-            </p>
-            <p> 
-              Āmɛ̀n 
-            </p>
-   
-
+  
+          <ul>
+            <li>
+              <p>
+                C : tch (tchèque)
+              </p>
+            </li>
+            <li>
+              <p>
+                j: dj (John)
+              </p>
+            </li>
+            <li>
+              <p>
+                Ƞ: ng (à la fin d’un mot)
+              </p>
+            </li>
+            <li>
+              <p>
+                [e] : é (thé, démodé, manger, et)
+              </p>
+            </li>
+            <li>
+              <p>
+                [ε] dans : c’était, vêtement, mais
+              </p>
+            </li>
+            <li>
+              <p>
+                [ə] dans : je pense que, devoir
+              </p>
+            </li>
+            <li>
+              <p>
+                sh: ch (chant)
+              </p>
+            </li>
+            <li>
+              <p>
+                ᴐ : (comme le « o » de porte)
+              </p>
+            </li>
+            <li>
+              <p>
+                u: ou (pou)
+              </p>
+            </li>
+            <li>
+              <p>
+                zh: j (jean)
+              </p>
+            </li>
+            <li>
+              <p>
+                (') n’a pas d’équivalent français
+              </p>
+            </li>
+            <li>
+              <p>
+                Le reste de l’alphabet se prononce comme en français.
+              </p>
+            </li>
+          </ul>
+  
         </h4>
-      </td>
-<td  width=5%></td>
-      <td  width=50%>
-
-           <h2 > Version 2</h2>
-        <h4> 
-            <p> 
-            Tâ yɔ̄k yə̀ ǒ kɛ̄bə̀ŋ á ā, 
-          </p>
-          <p> 
-(Á) Tsô tsǔ pə̄ dɔ̂lɔ̌ 
-</p>
-<p> 
-(Á) Nə̀fò tsǔ sɔ́’ɔ̄, də̀ŋdə̀ŋ sīcā’ā pá’ kɛ̄bə̀ŋ á ā 
-</p>
-<p> 
-Hā bí pyə̀ tyə́’ ɔ̄, 
-</p>
-<p> 
-Wútsʉ̂ (ywə́tsʉ̂) yɔ̄k nə́ yə̀ŋ tyɛ̄’ɛ̄, 
-</p>
-<p> 
-Tyɔ̀nyə̀ mnwə̀ cwə̀pùŋ mɔ̄k 
-</p>
-<p> 
-Pá’ pyə́ dyɔ̀nyə̀ mnwə̀ cwə̀pùŋ pyə̀shwə́ pò á ā 
-</p>
-<p> 
-Kə̂ tāk wɔ̄k cʉ̂m mlə̀ŋtə̀, 
-</p>
-<p> 
-Pà’ wɔ̄k nə̂ jyə̀ cwə̀pùŋ 
-</p>
-<p> 
-Ā pó’ō
-</p> 
-          </h4>
-      </td>
-      </tr>
-
-      </table>
-
+  
       </article>
-
-       <article *ngIf="menu==='6'" id="Chanter" name="Chanter"  (click)="onMenuClic(6)" >
-              <h1> Je chante en ghomala</h1>
-              <h2> Je chante en ghomala</h2>
-              <h3> Je chante en ghomala</h3>
-              <h4> Je chante en ghomala</h4>
-       </article>
-
+  
+      <article *ngIf="menu=='2'">
+        <div>
+          <h1>
+            <B>
+              <U>
+                Le ton des mots
+              </U>
+            </B>
+          </h1>
+        </div>
+  
+        <h4>
+          <ul>
+            <li>
+              <p>
+                « - » ton moyen Exp : shyƏ (eau), pyƏ (nous)
+              </p>
+            </li>
+            <li>
+              <p>
+                « ʹ, Á » ton haut, Exp : Père = tá, Mère = má
+              </p>
+            </li>
+            <li>
+              <p>
+                «` , Ỳ ,` , à, ì, » ton bas, Exp : tà (marmite), mà (habitude)
+              </p>
+            </li>
+            <li>
+              <p>
+                « ŭ » ton bas haut Exp : pŭ = la main
+              </p>
+            </li>
+            <li>
+              <p>
+                « ^ » ton haut bas EXP : pû = nous deux
+              </p>
+            </li>
+          </ul>
+        </h4>
+  
+      </article>
+  
+      <article *ngIf="menu=='5'" id="prier" name="prier" (click)="onMenuClic(5)" class="article">
+        <div class="a">
+          <h1> NOTRE PÈRE </h1>
+        </div>
+        <table>
+  
+          <tr>
+            <td width=45%>
+              <h2> Version 1</h2>
+              <h4>
+  
+                <p>
+                  Tâ yɔ̄k yə̀ ǒ kɛ̄bə̀ŋ,
+                </p>
+                <p>
+                  Á tsô tsǔ pə̄ dɔ̂lɔ̌
+                </p>
+                <p>
+                  Á nə̀fò tsǔ sɔ́’ɔ̄,
+                </p>
+                <p>
+                  Á nə́kùŋ ō pə̄ də̀m cā’ā də̀ŋdə̀ŋ pá’ kɛ̄bə̀ŋ á ā
+                </p>
+                <p>
+                  Hā bí pyə̀ tyə́’ ɔ̄,
+                </p>
+                <p>
+                  Ywə́tsʉ̂ yɔ̄k nə́ yə̀ŋ tyɛ̄’ɛ̄,
+                </p>
+                <p>
+                  Wā’ mhɔ̀ mɔ̄k pá’ pyə̄ gə̀ yɔ̄k nə̂ mfə̂ pɔ̄k áā
+                </p>
+                <p>
+                  Kə̂ pīŋ pyə̀ kō nə̂ mlə̀ŋtə̀,
+                </p>
+                <p>
+                  Tē wɔ̄k nə̂ jyə̀ cwə̀pùŋ
+                </p>
+                <p>
+                  Nə́kə́lə̄, nə̀fò, tʉ̄ɔ̀, bá ghāmtə̄ bə̄ bû
+                </p>
+                <p>
+                  Nə́ gùŋ mcwə̀ àwɛ̄
+                </p>
+                <p>
+                  Āmɛ̀n
+                </p>
+  
+  
+              </h4>
+            </td>
+            <td width=5%></td>
+            <td width=50%>
+  
+              <h2> Version 2</h2>
+              <h4>
+                <p>
+                  Tâ yɔ̄k yə̀ ǒ kɛ̄bə̀ŋ á ā,
+                </p>
+                <p>
+                  (Á) Tsô tsǔ pə̄ dɔ̂lɔ̌
+                </p>
+                <p>
+                  (Á) Nə̀fò tsǔ sɔ́’ɔ̄, də̀ŋdə̀ŋ sīcā’ā pá’ kɛ̄bə̀ŋ á ā
+                </p>
+                <p>
+                  Hā bí pyə̀ tyə́’ ɔ̄,
+                </p>
+                <p>
+                  Wútsʉ̂ (ywə́tsʉ̂) yɔ̄k nə́ yə̀ŋ tyɛ̄’ɛ̄,
+                </p>
+                <p>
+                  Tyɔ̀nyə̀ mnwə̀ cwə̀pùŋ mɔ̄k
+                </p>
+                <p>
+                  Pá’ pyə́ dyɔ̀nyə̀ mnwə̀ cwə̀pùŋ pyə̀shwə́ pò á ā
+                </p>
+                <p>
+                  Kə̂ tāk wɔ̄k cʉ̂m mlə̀ŋtə̀,
+                </p>
+                <p>
+                  Pà’ wɔ̄k nə̂ jyə̀ cwə̀pùŋ
+                </p>
+                <p>
+                  Ā pó’ō
+                </p>
+              </h4>
+            </td>
+          </tr>
+  
+        </table>
+  
+      </article>
+  
+      <article *ngIf="menu=='6'" id="Chanter" name="Chanter" (click)="onMenuClic(6)">
+        <section>
+          <h2>
+            HYMNE NATIONAL EN GHOMÁLÁ
+          </h2>
+          <p>
+            Ô Kamərun, thəsi pə məgəju′ pók,
+  
+          </p>
+          <p>
+            Lu tsǔ si biŋ shəŋtə bómtə yù ləpuə.
+  
+          </p>
+          <p>
+            Pâ′ tsənam á, yu dzəguŋ go pə nəŋnyə,
+          </p>
+          <p>
+            Pə syamtiŋ nə yok nəpîŋ ba ntamtə yok.
+  
+          </p>
+          <p>
+            Gaə guŋ pô pǔ Jyəŋka′ gó ntám sîsi,
+  
+          </p>
+          <p>
+            Ntəmnam ba m Binam pə ntúm ŋkùŋnyə,
+          </p>
+          <p>
+            Nə fa′ bû pə da′ yáp ywə yə wâp do á,
+  
+          </p>
+          <p>
+            Jyə á wáp tôm map mfa′ nə guŋ mcwə awέ.
+  
+          </p>
+          <p>
+            « Tuodəŋ guŋ yók ! tuodəŋ câ′ tsók !
+          </p>
+          <p>
+            Ô bə da′ yok fo′ nəpuŋ nyənyó,
+  
+          </p>
+          <p>
+            Da′ yok ŋwənyə, da′ yok nətuə.
+  
+          </p>
+          <p>
+            Nkuŋnyə pə bû, ba ghámtə gwyə bû. »
+          </p>
+  
+  
+        </section>
+        <section>
+  
+  
+          <h2>
+            HYMNE DE GLOIRE DU PEUPLE BAMILEKE: PƏ GHƆ ́Ɔ ́
+          </h2>
+  
+          Pəghɔ́ təntám nə̂dhəguŋyɔ́k
+  
+          <p>
+  
+            Allons jusqu’aux extrémités de notre village
+          </p>
+          <p>
+  
+            Cú'təpo á lá' pyə, pyə̂dɔpə̂guŋyɔ́k:
+          </p>
+          <p>
+  
+            Enfants de notre village, nous nous battons pour notre terre
+          </p>
+          <p>
+  
+            Guŋyɔ̂kbə́ guŋSí:
+          </p>
+          <p>
+  
+            Notre terre est celle de Dieu
+          </p>
+          <p>
+  
+            .Mo tsʉ̂shamguŋ, bəê gɔpfʉ́:
+          </p>
+          <p>
+  
+            Le traitre sera mis à mort
+          </p>
+          <p>
+  
+            Mo yəe lətʉ́ guŋyɔ́kpəá:
+          </p>
+          <p>
+  
+            Celui qui a fondé notre village
+          </p>
+          <p>
+  
+            Lə̂dəpə́ nyə́nyɔ́ ntʉ́:
+          </p>
+          <p>
+  
+            l’a fait avec vérité/justice
+          </p>
+          <p>
+  
+            Pyə̂gɔlá' pə́ pfʉ́, pfʉ́ pə̂nwənyə́nyɔ́:
+          </p>
+          <p>
+  
+            Nous mourrons un jour pour la vérité / justice
+          </p>
+          <p>
+            [
+          </p>
+          <p>
+  
+            Pyə̂bə́ ntʉ́mguŋ, bwɔ́kpə̂da' ta' ywə́:
+          </p>
+          <p>
+  
+            Nous n’avons peur que d’une chose sur cette terre
+          </p>
+          <p>
+  
+            Nə́ kəŋnyəbíŋbíŋ:
+          </p>
+          <p>
+  
+            Refuser de tout accepter (refuser d’être béni-oui-oui)
+          </p>
+          <p>
+  
+            Nə́ nəbíguŋyɔ́kpə̀:
+          </p>
+          <p>
+  
+            Pour perdre notre terre
+          </p>
+          <p>
+  
+            ] x 2
+        </section>
+  
+      </article>
+  
+      <article *ngIf="menu=='7'" id="texte" name="texte" (click)="onMenuClic(7)">
+        <section>
+          <h1>Introduction</h1>
+          <p>People have been catching fish for food since before recorded history...</p>
+        </section>
+  
+        <section>
+          <h1>Equipment</h1>
+          <p>The first thing you'll need is a fishing rod or pole that you find comfortable and is strong enough for the
+            kind of fish you're expecting to try to land...</p>
+        </section>
+  
+      </article>
+  
+    </div>
+  
   </div>
-
-</body>
-
