@@ -61,8 +61,10 @@
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li *ngIf="!this.currentUser && !auth.isAuthenticated() ">
-            <a [routerLink]="['user/login']">Connexion</a>
-            <a (click)="logout()"> Déconnexion </a>
+            <a [routerLink]="['user/login']">Se connecter</a>
+          </li>
+          <li>
+            <a [routerLink]="['../../user/createuser']"> S'inscrire </a>
           </li>
           <li *ngIf="!!this.currentUser || auth.isAuthenticated() ">
             Bienvenue {{this.currentUser?.email}}
