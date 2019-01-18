@@ -57,13 +57,14 @@
             </li>
           </ul>
         </li>
+        
       </ul>
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li *ngIf="!this.currentUser && !auth.isAuthenticated() ">
             <a [routerLink]="['user/login']">Se connecter</a>
           </li>
-          <li>
+          <li *ngIf="!this.currentUser && !auth.isAuthenticated() ">
             <a [routerLink]="['../../user/createuser']"> S'inscrire </a>
           </li>
           <li *ngIf="!!this.currentUser || auth.isAuthenticated() ">
