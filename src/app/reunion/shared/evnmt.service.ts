@@ -33,7 +33,7 @@ export class EvnmtService {
   }
 
   getEvnmt(id: number): Observable<IEvnmt> {
-    return this.http.get(this.endpointUrl + 'evnmts/' + id).map((response: Response) => {
+    return this.http.get(this.endpointUrl + 'evnmts/' + id, this.httpOptions).map((response: Response) => {
       return <IEvnmt>response.json();
     }).catch(this.handleError);
   }
