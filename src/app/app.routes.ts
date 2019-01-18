@@ -47,7 +47,7 @@ export const appRoutes = [
   { path: 'reunions/tableau', component: ReunionGridComponent },
   { path: 'reunions', component: ReunionsListComponent , resolve: { evnmts: EvnmtListResolver } },
   // { path: 'reunions', component: ReunionsListComponent },
-  { path: 'reunions/:id', component: EvnmtDetailsComponent, resolve: { evnmt: EvnmtResolver } },
+  { path: 'reunions/:id', component: EvnmtDetailsComponent, resolve: { evnmt: EvnmtResolver },  canActivate: [AuthGuard]  },
   // { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator] },
   { path: 'reunions/detail/new', component: CreateReuniondtlComponent, canActivate: [AuthGuard]  },
 
