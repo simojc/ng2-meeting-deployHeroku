@@ -24,7 +24,7 @@ export class TontGridComponent implements OnInit {
     pager: any = {};
     // paged items
     pagedItems: any[];
-    // public searchString: string;
+     public searchString: string;
 
     constructor(private tontService: TontService, private router: Router,
         private alertService: AlertService, private pagerService: PagerService) {

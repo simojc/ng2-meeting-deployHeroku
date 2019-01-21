@@ -16,6 +16,7 @@ export class CreateTontPersComponent implements OnInit {
   personnes: IPers[];
   angForm: FormGroup;
   currentUser: IUser;
+  isSelected: true;
 
   constructor(private route: ActivatedRoute, private router: Router,
     private tontService: TontService, private fb: FormBuilder,
