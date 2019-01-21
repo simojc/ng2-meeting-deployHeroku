@@ -4,7 +4,7 @@
     {{ title }}
   </div>
       <hr>
-  <div class=" col-md-6 ">
+  <div>
     <form [formGroup]="angForm" (ngSubmit)="addRpnpers(angForm.value)" autocomplete="off">
       <table>
         <tr>
@@ -18,7 +18,7 @@
               <label for="pers_id"> Personne </label>
               <select class="form-control" formControlName="pers_id" #pers_id>
                 <option *ngFor="let pers of personnes" value={{pers.id}}>
-                  {{pers.id}} - {{pers.nom}} - {{pers.prenom}}
+                   {{pers.nom}} {{pers.prenom}}
                 </option>
               </select>
             </div>
@@ -51,7 +51,7 @@
                   <label for="repdt1_id"> Répondant 1 </label>
                   <select class="form-control" formControlName="repdt1_id" #repdt1_id>
                     <option *ngFor="let pers of personnes" value={{pers.id}}>
-                      {{pers.id}} - {{pers.nom}} - {{pers.prenom}}
+                      {{pers.nom}}  {{pers.prenom}}
                     </option>
                   </select>
                 </div>
@@ -68,7 +68,7 @@
                   <label for="repdt2_id"> Répondant 2 </label>
                   <select class="form-control" formControlName="repdt2_id" #repdt2_id>
                     <option *ngFor="let pers of personnes" value={{pers.id}}>
-                      {{pers.id}} - {{pers.nom}} - {{pers.prenom}}
+                       {{pers.nom}} {{pers.prenom}}
                     </option>
                   </select>
                 </div>        

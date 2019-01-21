@@ -3,7 +3,7 @@
         {{ title }}
       </div>
   <hr>
-  <div class="col-md-6">
+  <div >
     <form #newEvnmtForm="ngForm" (ngSubmit)="saveEvnmt(newEvnmtForm.value)" autocomplete="off" novalidate>
       <input type="hidden" id="groupe_id" name="groupe_id" hide [(ngModel)]="currentUser.groupe_id" />
       <table>
@@ -17,7 +17,7 @@
             <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.nom?.invalid && newEvnmtForm.controls.nom?.touched}">
               <label for="nom">Titre</label>
               <em *ngIf="newEvnmtForm.controls.nom?.invalid && (newEvnmtForm.controls.nom?.touched)">Required</em>
-              <input (ngModel)="evnmt.nom" name="nom" required id="nom" type="text" class="form-control" placeholder="Titre de la réunion..." />
+              <input (ngModel)="evnmt.nom" name="nom" required id="nom" type="text" class="form-control" placeholder="Titre..." />
             </div>
           </th>
           <th> </th>

@@ -11,6 +11,7 @@ export class EngmtGridComponent implements OnInit {
     currentUser: IUser;
     engmtpers: IEngmtpers[] = [];
     public startDate: any;
+    engmnts: IEngmt;
     public endDate: any;
     // array of all items to be paged
     private allItems: any[] = [];
@@ -26,8 +27,15 @@ export class EngmtGridComponent implements OnInit {
     }
     ngOnInit() {
         this.loadAllEngmnts();
+        this.loadsEngmts();
     }
 
+    private loadsEngmts() {
+        this.engmtService.getAll().subscribe(
+          res => { this.engmnts = res; },
+          error => { this.alertService.error(error); }
+        );
+      }
     deleteEngmnt(_id: string) {
         this.engmtService.delete(_id).subscribe(() => { this.loadAllEngmnts(); });
     }
@@ -43,8 +51,8 @@ export class EngmtGridComponent implements OnInit {
         );
     }
 
-    EditEngmnt(id) {
-        this.router.navigate(['/Engmnts/editEngmnt/', id]);
+    Edit(id) {
+        this.router.navigate(['/engmtpers/edit/', id]);
     }
 
     // Nouveau  code pour pagination
@@ -56,5 +64,23 @@ export class EngmtGridComponent implements OnInit {
         // console.log(" this.pagedItems = " + JSON.stringify(this.pagedItems));
     }
 
+    add() {
+        this.router.navigate(['/engmtpers/new']);
+      }
+
+      selectchange(args) {
+        // const tont_Selected = args.target.value;
+        const tontId = args.target.value;
+        // console.log('tontId = ' + tontId);
+        this.engmtService.getAllEngmtPers (tontId).subscribe(
+            engmtpers => {
+                this.engmtpers = engmtpers;
+                // this.allItems = engmtpers;
+              //   this.setPage(1);
+                // console.log(" this.allItems = " + JSON.stringify(this.allItems));
+            },
+            error => { this.alertService.error(error); }
+        );
+      }
 
 }

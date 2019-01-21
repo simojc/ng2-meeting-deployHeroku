@@ -30,26 +30,27 @@
       </tbody>
     </table>
   
-    <!-- pager -->
-    <div align="right">
+      <!-- pager -->
+  <div align = "right">
       <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
         <li [ngClass]="{disabled:pager.currentPage === 1}">
-          <a (click)="setPage(1)">premier</a>
+          <a [routerLink]=""  (click)="setPage(1)">premier</a>
         </li>
         <li [ngClass]="{disabled:pager.currentPage === 1}">
-          <a (click)="setPage(pager.currentPage - 1)">Précédent</a>
+          <a [routerLink]="" (click)="setPage(pager.currentPage - 1)">Précédent</a>
         </li>
         <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-          <a (click)="setPage(page)">{{page}}</a>
+          <a [routerLink]="" (click)="setPage(page)">{{page}}</a>
         </li>
         <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-          <a (click)="setPage(pager.currentPage + 1)">Suivant</a>
+          <a [routerLink]="" (click)="setPage(pager.currentPage + 1)">Suivant</a>
         </li>
         <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-          <a (click)="setPage(pager.totalPages)"> Dernier </a>
+          <a [routerLink]="" (click)="setPage(pager.totalPages)"> Dernier </a>
         </li>
       </ul>
     </div>
+    <!-- End  pager -->
   </div>
 
   <div  *ngIf="this.currentUser?.admin" align="left">
@@ -58,81 +59,3 @@
         Ajouter
       </button>
     </div>
-
-<!-- 
-<body>
-  <div style="padding: 25px">
- 
-    <div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
-      <data-table id="rpnpers-grid"
-                  headerTitle="Adhésion RPN"
-                  [items]="items"
-                  [itemCount]="itemCount"
-                  (reload)="loadRpnPers()"
-                  (rowClick)="rowClick($event)"
-                  (rowDoubleClick)="rowDoubleClick($event)"
-                  [rowTooltip]="rowTooltip">
-
-        <data-table-column [property]="'nom_pers'"
-                           [header]="'Nom et prénom'"
-                           [sortable]="true"
-                           [resizable]="true">
-        </data-table-column>
-
-        <data-table-column [property]="'mtrle'"
-                           [header]="'Matricule RPN'"
-                           [sortable]="true"
-                           [resizable]="true">
-        </data-table-column>
-        <data-table-column [property]="'dtadh'"
-                           [header]="'Date adhésion'">
-          <ng-template #dataTableCell let-item="item">
-            <span>{{item.dtadh | date:'yyyy-MM-dd'}}</span>
-          </ng-template>
-        </data-table-column>
-        <data-table-column [property]="'depot'"
-                           [header]="'Dépot ($)'"
-                           width="100px">
-        </data-table-column>
-
-        <data-table-column [property]="'dtmajdpt'"
-                           [header]="'Mise à jour'">
-          <ng-template #dataTableCell let-item="item">
-            <span>{{item.dtmajdpt | date:'yyyy-MM-dd'}}</span>
-          </ng-template>
-        </data-table-column>
-
-        <data-table-column [property]="'message'"
-                           [header]="'Message'"
-                           width="220px"
-                           color="#ff0000">
-          <ng-template #dataTableCell let-item="item">
-            <span style="color: rgb(232, 0, 0)"> {{item.message}}</span>
-          </ng-template>
-          <ng-template #dataTableHeader let-item="item">
-            <span style="color: rgb(232, 0, 0)">Message</span>
-          </ng-template>
-        </data-table-column>
-
-        <data-table-column header="Actions">
-          <ng-template #dataTableHeader let-item="item">
-            Actions
-          </ng-template>
-          <ng-template #dataTableCell let-item="item">
-            <button (click)="Edit(item.id)" class="btn btn-sm btn-default">Modifier</button>
-           
-          </ng-template>
-        </data-table-column>
-
-      </data-table>
-    </div>
-    <div  *ngIf="this.currentUser?.admin || auth.isAuthenticated()" align="left">
-      <button type="button" class="btn btn-primary"
-              (click)="add()">
-        Nouvelle adhésion
-      </button>
-    </div>
-
-  </div>
-</body>
- -->

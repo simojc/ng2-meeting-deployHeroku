@@ -12,7 +12,6 @@ import { IEngmt, IPers, IUser, IEngmtpers } from '../../Models/index';
 export class CreateEngmtPersComponent implements OnInit {
 
   title = 'Enregistrer un membre à un engagement';
-  rpnpers: any;
   personnes: IPers[];
   engmnts: IEngmt[];
   angForm: FormGroup;
@@ -44,6 +43,7 @@ export class CreateEngmtPersComponent implements OnInit {
       dtchgst: '',
       message: '',
       mont_unit: '',
+      periodicite: '',
     });
   }
 
@@ -64,7 +64,7 @@ export class CreateEngmtPersComponent implements OnInit {
     // this.saveNewPersonne.emit();
      // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     // this.router.navigate(['/']);
-    this.alertService.success(' Engagement enregistré avec sussès', true);
+    this.alertService.success(' Engagement créé avec sussès', true);
     this.loading = false;
   }
 
@@ -82,22 +82,14 @@ export class CreateEngmtPersComponent implements OnInit {
     );
   }
 
-  filterChanged(selectedValue: string) {
-    console.log('value selected is ', selectedValue);
-   // const  u = this.engmnts.find(selectedValue).mont_unit;
-    }
-
     selectchange(args) {
-      // this.mont_unit = args.target.value;
-      // this.countryName = args.target.options[args.target.selectedIndex].text;
-      console.log('value selected is ', args.target.value);
-      console.log('text selected is ', args.target.options[args.target.selectedIndex].text);
       const engmt_Selected = this.engmnts.find(u => u.id === +args.target.value);
-      console.log('engmnts = ' + JSON.stringify(this.engmnts));
-      console.log('engmt_Selected.mont_unit = ' + JSON.stringify(engmt_Selected));
-     
       const mont_unit_ctrl = this.angForm.get('mont_unit');
       mont_unit_ctrl.setValue(engmt_Selected.mont_unit);
+
+      const priodicite_ctrl = this.angForm.get('periodicite');
+      priodicite_ctrl.setValue(engmt_Selected.periodicite);
+
     }
 
   cancel() {

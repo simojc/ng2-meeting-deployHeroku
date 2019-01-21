@@ -41,7 +41,7 @@ export class TontComponent implements OnInit {
   }
 
   private loadTontpers() {
-    this.tontService.getAllTontPers(this.currentPers[0].id).subscribe(
+    this.tontService.getById (this.currentPers[0].id).subscribe(
       tontpers => {
         // console.log(" tontpers =   "+ JSON.stringify(tontpers))
         this.tontpers = tontpers;

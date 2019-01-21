@@ -1,0 +1,86 @@
+<!--<div class="panel panel-primary">-->
+<div class="row">
+  <div class="panel-heading">
+    <h3> {{ title }} </h3>
+  </div>
+  <div *ngIf="engmtpers">
+    <form [formGroup]="angForm" (ngSubmit)="update(angForm.value)" autocomplete="off">
+      <table>
+        <tr>
+          <th width=45%></th>
+          <th width=10%></th>
+          <th width=45%></th>
+        </tr>
+        <tr>
+          <th>
+            <div class="form-group">
+              <label for="engmt_id" class="col-md-4"> Engagement </label>
+              <select disabled class="form-control" formControlName="engmt_id" #engmt_id (change)="selectchange($event)"
+                [(ngModel)]="engmtpers.engmt_id" [disabled]="disabled" >
+                <option *ngFor="let engmnt of engmnts" value={{engmnt.id}}>
+                  {{engmnt?.nom}}; Montant:  {{engmnt?.mont_unit}}
+                </option>
+              </select>
+       
+            </div>
+          
+          </th>
+          <th></th>
+          <th>
+              <div class="form-group">
+                  <label class="col-md-4"> exercice </label>
+                  <input type="number" min="0" class="form-control" formControlName="exercice" #exercice [(ngModel)]="engmtpers.exercice" readonly />
+                </div>
+                
+          </th>
+        </tr>
+  
+        <tr>
+          <th>
+            <div class="form-group">
+              <label for="pers_id" class="col-md-4"> Personne </label>
+              <select disabled class="form-control" formControlName="pers_id" #pers_id [(ngModel)]="engmtpers.pers_id" [disabled]="butDisabled" >
+                <option *ngFor="let pers of personnes" value={{pers.id}}>
+                  {{pers.nom}} {{pers.prenom}}
+                </option>
+              </select>
+            </div>
+          </th>
+          <th></th>
+          <th>
+            <div class="form-group">
+              <label class="col-md-6"> Montant payé </label>
+              <input currencyMask class="form-control" formControlName="mont" #mont [(ngModel)]="engmtpers.mont" />
+            </div>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <div class="form-group">
+              <label class="col-md-4"> Statut </label>
+              <input type="text" class="form-control" formControlName="statut" #statut [(ngModel)]="engmtpers.statut" />
+            </div>
+          </th>
+          <th></th>
+          <th>
+            <div class="form-group">
+              <label class="col-md-8"> Date MAJ </label>
+              <input type="text" class="form-control" formControlName="dtchgst" #dtchgst placeholder="YYYY-MM-DD"
+                [(ngModel)]="engmtpers.dtchgst" />
+            </div>
+            <div *ngIf="angForm.controls['dtchgst'].invalid && (angForm.controls['dtchgst'].dirty || angForm.controls['dtadh'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="angForm.controls['dtchgst'].errors.required">
+                La date de MAJ est obligatoire.
+              </div>
+            </div>
+          </th>
+        </tr>
+      </table>
+      <div class="form-group">
+        <button [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Ajouter</button>
+        <button type="button" (click)="cancel()" class="btn btn-default">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>

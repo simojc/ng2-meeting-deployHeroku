@@ -1,3 +1,4 @@
+
 <div>
   <div>
     <h1 class="panel-title"> Liste des membres </h1>
@@ -46,22 +47,24 @@
   <div align = "right">
     <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
       <li [ngClass]="{disabled:pager.currentPage === 1}">
-        <a (click)="setPage(1)">premier</a>
+        <a [routerLink]=""  (click)="setPage(1)">premier</a>
       </li>
       <li [ngClass]="{disabled:pager.currentPage === 1}">
-        <a (click)="setPage(pager.currentPage - 1)">Précédent</a>
+        <a [routerLink]="" (click)="setPage(pager.currentPage - 1)">Précédent</a>
       </li>
       <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-        <a (click)="setPage(page)">{{page}}</a>
+        <a [routerLink]="" (click)="setPage(page)">{{page}}</a>
       </li>
       <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-        <a (click)="setPage(pager.currentPage + 1)">Suivant</a>
+        <a [routerLink]="" (click)="setPage(pager.currentPage + 1)">Suivant</a>
       </li>
       <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-        <a (click)="setPage(pager.totalPages)"> Dernier </a>
+        <a [routerLink]="" (click)="setPage(pager.totalPages)"> Dernier </a>
       </li>
     </ul>
   </div>
+  <!-- End  pager -->
+
 </div>
 
 <div *ngIf="this.currentUser?.admin" align = "left">
@@ -69,37 +72,3 @@
     Ajouter
   </button>
 </div>
-
-
-<!-- Lien internet: 
-https://offering.solutions/blog/articles/2016/11/21/how-to-implement-a-table-filter-in-angular-2/
-===========================
- -->
-
-<!-- ===================================
-Autre Exemple utilisation du pipe searchByName
-<tr *ngFor="let teacher of (TEACHERS | searchByName: searchText)">
-  <td>{{teacher.name}}</td>
-  <td>{{teacher.subject}}</td>
-  <td>{{teacher.address}}</td>
-  <td>{{teacher.mobile}}</td>
-  <td><button type="button" class="btn btn-secondary btn-sm" (click)="deleteTeacher(teacher.id)">Delete</button></td>
-</tr> 
-
-Link Here: https://vitalflux.com/angular-search-filter-table-column/
-
--->
-
-
-<!-- Tri par date, à appliquer sur le componet renionList: ReunionsListComponent
-<tr *ngFor="let item of mylst | sortgrid: '-createdDate'">
-  <td>
-      {{item.value}}
-  </td>
-  <td>
-      {{item.createdDate}}
-  </td>
-</tr>
-•‘-‘ sign with ‘-createdDate’ in above html code will sort data set in Descending manner.
-LInk: https://hassantariqblog.wordpress.com/2017/03/16/angular2-creating-custom-sort-filter-pipe-for-datetime-column-ngfor-directive/
- -->

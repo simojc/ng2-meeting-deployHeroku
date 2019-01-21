@@ -23,7 +23,7 @@ import { IGroupe, IUser, IEvnmt } from '../../Models/index';
 export class CreateReunionComponent {
   isDirty: boolean = true;
   currentUser: IUser;
-  title = "Création d'une réunion";
+  title = "Ajout d'une séance de l'AG";
   evnmt: IEvnmt;
   // locations: ILocation[];
   constructor(private router: Router, private evnmtService: EvnmtService,

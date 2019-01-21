@@ -12,7 +12,7 @@ import { ITont, ITontpers, IPers, IUser } from '../../Models/index';
 export class CreateTontPersComponent implements OnInit {
 
   title = 'Enregistrer un membre à une tontine ';
-  tontpers: any;
+  tonts: any;
   personnes: IPers[];
   angForm: FormGroup;
   currentUser: IUser;
@@ -74,7 +74,7 @@ export class CreateTontPersComponent implements OnInit {
 
   private loadTonts() {
     this.tontService.getAllTonts().subscribe(
-      res => { this.tontpers = res; },
+      res => { this.tonts = res; },
       error => { this.alertService.error(error); }
     );
   }

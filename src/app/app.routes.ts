@@ -23,7 +23,7 @@ import {
 } from './rpn/index';
 
 import { TontComponent, CreateTontPersComponent,
-  TontGridComponent
+  TontGridComponent, EditTontpersComponent
  } from './tont/index';
 
 import {
@@ -34,7 +34,7 @@ import {
 
 import { EngmtComponent,
    CreateEngmtPersComponent,
-    EngmtGridComponent
+    EngmtGridComponent, EditEngmtComponent
  } from './engmt/index';
 
 export const appRoutes = [
@@ -61,7 +61,9 @@ export const appRoutes = [
   { path: 'membres/edit/:id', component: EditPersComponent, canActivate: [AuthGuard]  },
   { path: 'tontpers', component: TontComponent, canActivate: [AuthGuard]  },
   { path: 'engmtpers', component: EngmtComponent, canActivate: [AuthGuard]  },
+  { path: 'engmtpers/edit/:id', component: EditEngmtComponent, canActivate: [AuthGuard]  },
   { path: 'tontpers/new', component: CreateTontPersComponent, canActivate: [AuthGuard]  },
+  { path: 'tontpers/edit/:id', component: EditTontpersComponent, canActivate: [AuthGuard]  },
   { path: 'engmtpers/new', component: CreateEngmtPersComponent, canActivate: [AuthGuard]  },
   { path: 'engmtpersgrid', component: EngmtGridComponent , canActivate: [AuthGuard] },
   { path: 'tontpersgrid', component: TontGridComponent , canActivate: [AuthGuard] },

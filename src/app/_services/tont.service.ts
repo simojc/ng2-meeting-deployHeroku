@@ -46,33 +46,26 @@ export class TontService {
     }
 
     getById(_id: number) {
-        // return this.httpClient.get<ITont>(this.endpointUrl + 'tontpers/' + _id);
-        return this.http.get(this.endpointUrl + 'tontpers/' + _id, this.httpOptions)
+       // console.log('URL = ' + this.endpointUrl + 'tontpers?groupe=' + this.currentUser.groupe_id + '&tont_id=' + +_id );
+        return this.http.get(this.endpointUrl + 'tontpers/' + _id + '?groupe=' + this.currentUser.groupe_id, this.httpOptions)
             .map((response: Response) => <ITontpers>response.json())
             .catch(this.handleError);
     }
 
-    getAllTontPers(pers_id: number) {
-        // return this.httpClient.get<ITontpers[]>(this.endpointUrl + 'tontpers/' + pers_id);
-        return this.http.get(this.endpointUrl + 'tontpers/' + pers_id, this.httpOptions)
-            .map((response: Response) => <ITontpers>response.json())
-            .catch(this.handleError);
-    }
-
-    getToutesTonts() {
-        // return this.httpClient.get<IEngmtpers[]>(this.endpointUrl + 'engmtpers/' + pers_id);
-        console.log('URL = ' + this.endpointUrl + 'tontpers?groupe=' + this.currentUser.groupe_id );
-        // this.endpointUrl + 'pers?type=M&groupe=' + this.currentUser.groupe_id
-        return this.http.get(this.endpointUrl + 'tontpers?groupe=' + this.currentUser.groupe_id, this.httpOptions)
-        .map((response: Response) => <ITontpers[]>response.json())
+    getById_uneLigne(_id: number) {
+        return this.http.get(this.endpointUrl + 'unetontpers/' + _id, this.httpOptions)
+        .map((response: Response) => <ITontpers>response.json())
         .catch(this.handleError);
       }
- /*    create(tontpers: ITontpers) {
-        console.log(this.endpointUrl + 'tontpers/');
-        return this.http.post(this.endpointUrl + 'tontpers/', tontpers, this.httpOptions)
-            .map((response: Response) => <ITontpers>response.json() )
-            .catch(this.handleError);
-    } */
+
+    getAllTontineurs(tont_id: number) {
+       // return this.httpClient.get<IEngmtpers[]>(this.endpointUrl + 'engmtpers/' + pers_id);
+      // console.log('URL = ' + this.endpointUrl + 'tontpers?groupe=' + this.currentUser.groupe_id + '&tont_id=' + +tont_id );
+       // this.endpointUrl + 'pers?type=M&groupe=' + this.currentUser.groupe_id
+       return this.http.get(this.endpointUrl + 'tontpers?groupe=' + this.currentUser.groupe_id + '&tont_id=' + +tont_id, this.httpOptions)
+       .map((response: Response) => <ITontpers[]>response.json())
+       .catch(this.handleError);
+    }
 
     create(tontpers: ITontpers) {
         const uri = this.endpointUrl + 'tontpers';
@@ -80,11 +73,14 @@ export class TontService {
           res => console.log('Creation reussi tontpers'));
       }
 
-    update(tontpers: ITontpers) {
-        return this.http.put(this.endpointUrl + 'tontpers/' + tontpers.id, tontpers, this.httpOptions)
-            .map((response: Response) => <ITontpers>response.json())
-            .catch(this.handleError);
-    }
+    updateTontPers(tontpers, id) {
+        // console.log(' dans service; tontpers = ' + JSON.stringify(tontpers));
+        const uri = this.endpointUrl + 'tontpers/' + id;
+        this
+          .http
+          .put(uri, tontpers, this.httpOptions)
+          .subscribe(res => console.log('Done'));
+      }
 
     delete(_id: string) {
         return this.http.delete(this.endpointUrl + 'tontpers/' + _id, this.httpOptions)

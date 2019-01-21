@@ -44,8 +44,13 @@ export class EngmtService  {
       .catch(this.handleError);
     }
 
-    addEngmtpers(engmtpers) {
+    getById_uneLigne(_id: number) {
+        return this.http.get(this.endpointUrl + 'uneligneengmtpers/' + _id, this.httpOptions)
+        .map((response: Response) => <IEngmtpers>response.json())
+        .catch(this.handleError);
+      }
 
+    addEngmtpers(engmtpers) {
         const uri = this.endpointUrl + 'engmtpers';
         console.log('addEngmtpers uri =' + uri);
         console.log('addEngmtpers engmtpers =' + JSON.stringify(engmtpers));
@@ -62,9 +67,6 @@ export class EngmtService  {
     }
 
     getAllEngmt() {
-        // return this.httpClient.get<IEngmtpers[]>(this.endpointUrl + 'engmtpers/' + pers_id);
-        console.log('URL = ' + this.endpointUrl + 'engmtpers?groupe=' + this.currentUser.groupe_id );
-        // this.endpointUrl + 'pers?type=M&groupe=' + this.currentUser.groupe_id
         return this.http.get(this.endpointUrl + 'engmtpers?groupe=' + this.currentUser.groupe_id, this.httpOptions)
         .map((response: Response) => <IEngmtpers[]>response.json())
         .catch(this.handleError);
@@ -73,9 +75,11 @@ export class EngmtService  {
         return this.http.post(this.endpointUrl + 'engmtpers/', engmt);
     }
 
-    update(engmt: IEngmt) {
-        return this.http.put(this.endpointUrl + 'engmtpers/' + engmt.id, engmt);
-    }
+    update(engmtpers, id) {
+        const uri = this.endpointUrl + 'engmtpers/' + id;
+        this.http.put(uri, engmtpers, this.httpOptions)
+          .subscribe(res => console.log('Done'));
+      }
 
     delete(_id: string) {
         return this.http.delete(this.endpointUrl + 'engmtpers/' + _id);

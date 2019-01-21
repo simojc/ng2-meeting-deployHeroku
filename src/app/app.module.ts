@@ -55,19 +55,21 @@ import { GhomalaComponent } from './ghomala/index';
 import {
   RpnpersComponent,
   CreateRpnComponent,
-  EditRpnComponent
+  EditRpnComponent,
 } from './rpn/index';
 
 import { TontComponent,
   TontThumbnailComponent,
   CreateTontPersComponent,
-  TontGridComponent
+  TontGridComponent,
+  EditTontpersComponent
 } from './tont/index';
 
 import { PersComponent, CreatePersComponent, EditPersComponent } from './pers/index';
 import { EngmtComponent,
    EngmtThumbnailComponent,
-    CreateEngmtPersComponent, EngmtGridComponent
+    CreateEngmtPersComponent, EngmtGridComponent,
+    EditEngmtComponent
    } from './engmt/index';
 
 // import { MyGridApplicationComponent } from './my-grid/my-grid.component'
@@ -118,8 +120,10 @@ registerLocaleData(localeFr, 'fr');
     EngmtThumbnailComponent,
     CreateTontPersComponent,
     TontGridComponent,
+    EditTontpersComponent,
     CreateEngmtPersComponent,
-    EngmtGridComponent
+    EngmtGridComponent,
+    EditEngmtComponent
   ],
   imports: [
     BrowserModule,
