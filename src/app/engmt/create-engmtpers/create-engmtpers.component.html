@@ -111,7 +111,8 @@
           <th>
             <div class="form-group">
               <label class="col-md-8"> Date MAJ </label>
-              <input type="text" class="form-control" formControlName="dtchgst" #dtchgst placeholder="YYYY-MM-DD" />
+              <input ng-control="date" type="date" class="form-control" formControlName="dtchgst" #dtchgst placeholder="YYYY-MM-DD" />
+             <!--  <input [ngModel]="evnmt?.date | date:'yyyy-MM-dd'" name="date" required id="evnmtDate" type="date" class="form-control" -->
             </div>
             <div *ngIf="angForm.controls['dtchgst'].invalid && (angForm.controls['dtchgst'].dirty || angForm.controls['dtadh'].touched)"
               class="alert alert-danger">

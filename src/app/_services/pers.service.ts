@@ -1,6 +1,6 @@
-import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import { IUser, IPers } from '../Models/index';
 import { AlertService } from '../_services/index';
@@ -25,32 +25,18 @@ export class PersService {
     private endpointUrl = environment.API_URL_NODEJS; // prob de CORS
 
     getAll() {
-      // return this.httpClient.get<IPers[]>(this.endpointUrl + 'pers');
-
       return this.http.get(this.endpointUrl + 'pers', this.httpOptions)
         .map((response: Response) => <IPers[]>response.json())
         .catch(this.handleError);
     }
 
     getPersByMail(): Observable<IPers> {
-        /* return this.http.get(this.endpointUrl + 'pers?email=' + this.currentUser.email)
-        .map((response: Response) =>  {
-           return response;
-        })
-        .catch(this.handleError); */
-
         return this.http.get(this.endpointUrl + 'pers?email=' + this.currentUser.email, this.httpOptions)
         .map((response: Response) => <IPers>response.json())
         .catch(this.handleError);
-
       }
 
       getPersByType(): Observable<IPers[]> {
-     /*    return this.http.get(this.endpointUrl + 'pers?type=M&groupe=' + this.currentUser.groupe_id)
-        .map((response: Response) =>  {
-           return response;
-        })
-        .catch(this.handleError); */
         return this.http.get(this.endpointUrl + 'pers?type=M&groupe=' + this.currentUser.groupe_id, this.httpOptions)
         .map((response: Response) => <IPers[]>response.json())
         .catch(this.handleError);

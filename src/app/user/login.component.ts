@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { AlertService } from '../_services/index';
 import { Router } from '@angular/router';
@@ -7,25 +7,42 @@ import { Router } from '@angular/router';
 
   templateUrl: './login.component.html',
   styles: [`
-			em { float:right; color:#E05C65; padding-left:10px;}
-	`]
+      em { float:right; color:#E05C65; padding-left:10px;}
+      .sky{
+        background-image:url('http:/assets/images/sky.jpeg');
+        background-size: 600px 500px;
+      }
+      .elph{
+        background-image:url('http:/assets/images/elephan.jpeg');
+      }
+
+      .afr{
+        background-image:url('http:/assets/images/africa.jpeg');
+      }
+
+      h1 {text-align:center;}
+  `],
+
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   private loading: boolean;
   email: any;
   password: any;
   public mouseoverLogin: boolean;
   public loginInvalid: boolean;
-  // public formValue: Class;
 
   constructor(private authService: AuthService, private router: Router,
     private alertService: AlertService) {
   }
 
+  ngOnInit() {
+   // this.showConnexion = 1;
+  }
+
   login(formValues) {
     this.loading = true;
-    this.authService.loginUser(formValues.email, formValues.password)
+    this.authService.login(formValues.email, formValues.password)
       .then(
       res => {
         location.reload();
@@ -46,6 +63,7 @@ export class LoginComponent {
   }
 
   cancel() {
-    this.router.navigate(['/']);
+    this.router.navigate(['accueil']);
   }
+
 }

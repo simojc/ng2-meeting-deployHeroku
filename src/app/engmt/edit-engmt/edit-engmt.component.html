@@ -21,9 +21,7 @@
                   {{engmnt?.nom}}; Montant:  {{engmnt?.mont_unit}}
                 </option>
               </select>
-       
             </div>
-          
           </th>
           <th></th>
           <th>
@@ -65,8 +63,9 @@
           <th>
             <div class="form-group">
               <label class="col-md-8"> Date MAJ </label>
-              <input type="text" class="form-control" formControlName="dtchgst" #dtchgst placeholder="YYYY-MM-DD"
-                [(ngModel)]="engmtpers.dtchgst" />
+              <input type="date" class="form-control" formControlName="dtchgst" #dtchgst placeholder="YYYY-MM-DD"
+                [ngModel]="engmtpers.dtchgst | date:'yyyy-MM-dd'" (ngModelChange)="engmtpers.dtchgst = $event" />
+<!--            <input type="date"  [ngModel]="myDate | date:'yyyy-MM-dd'" (ngModelChange)="myDate = $event"> -->
             </div>
             <div *ngIf="angForm.controls['dtchgst'].invalid && (angForm.controls['dtchgst'].dirty || angForm.controls['dtadh'].touched)"
               class="alert alert-danger">

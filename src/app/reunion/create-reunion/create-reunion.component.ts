@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { EvnmtService } from '../shared/index';
 
 import {  AlertService } from '../../_services/index';
-import { IGroupe, IUser, IEvnmt } from '../../Models/index';
+import { IUser, IEvnmt } from '../../Models/index';
 
 @Component({
 

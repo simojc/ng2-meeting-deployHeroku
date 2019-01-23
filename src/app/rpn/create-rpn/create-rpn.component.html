@@ -80,7 +80,7 @@
 
             <div class="form-group">
               <label class="col-md-10"> Date adhésion (YYYY-MM-DD) </label>
-              <input type="text" class="form-control" formControlName="dtadh" #dtadh placeholder="YYYY-MM-DD"  />
+              <input ng-control="date" type="date" class="form-control" formControlName="dtadh" #dtadh placeholder="YYYY-MM-DD"  />
             </div>
             <div *ngIf="angForm.controls['dtadh'].invalid && (angForm.controls['dtadh'].dirty || angForm.controls['dtadh'].touched)"
               class="alert alert-danger">
@@ -97,12 +97,11 @@
             </div>
           </th>
         </tr>
-
         <tr>
           <th>
             <div class="form-group">
               <label class="col-md-10"> Date MAJ dépôt (YYYY-MM-DD)</label>
-              <input type="text" class="form-control" formControlName="dtmajdpt" #dtmajdpt placeholder="YYYY-MM-DD" />
+              <input ng-control="date" type="date" class="form-control" formControlName="dtmajdpt" #dtmajdpt  />            
             </div>
           </th>
         </tr>

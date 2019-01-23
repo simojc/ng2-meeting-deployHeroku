@@ -82,7 +82,7 @@ export class CreateTontPersComponent implements OnInit {
 
   cancel() {
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-    this.router.navigate(['rpn']);
+    this.router.navigate(['tontpersgrid']);
   }
 
 }

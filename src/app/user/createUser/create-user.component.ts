@@ -7,7 +7,21 @@ import { AuthService } from '../auth.service';
 
 @Component({
   moduleId: module.id,
-  templateUrl: 'create-user.component.html'
+  templateUrl: 'create-user.component.html',
+  styles: [`
+      em { float:right; color:#E05C65; padding-left:10px;}
+      .sky{
+        background-image:url('http:/assets/images/sky.jpeg');
+        background-size: 600px 400px;
+      }
+      .elph{
+        background-image:url('http:/assets/images/elephan.jpeg');
+      }
+      .afr{
+        background-image:url('http:/assets/images/africa.jpeg');
+      }
+      h1 {text-align:center;}
+  `],
 })
 export class CreateUserComponent {
 

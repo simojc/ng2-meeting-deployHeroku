@@ -64,7 +64,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of pagedItems | filter : 'nom_engmt' : searchString; let i = index ">
+            <tr *ngFor="let item of pagedItems | filter : 'nom_prenom' : searchString; let i = index ">
                 <td>{{item.nom_engmt }}&nbsp; &nbsp; {{ item.mont_unit | currency}} </td>
                 <td>{{item.periode}} </td>
                 <td>{{item.nom_prenom}} </td>

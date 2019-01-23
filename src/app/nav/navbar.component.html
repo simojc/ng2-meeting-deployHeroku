@@ -1,7 +1,9 @@
 <div class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand">Todjom-Qc</a>
+        <a class="navbar-brand" [routerLink]="['/']"  > {{title}} </a>
+     <!--  <a style="color: rgb(0,255,0)" class="navbar-brand" [routerLink]="['/']"  > {{title}} </a>
+      <a class="navbar-brand"> <font color="#ffffa0">{{title}}</font>  </a> -->
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -22,8 +24,8 @@
         </li>              
 
         <li><a [routerLink]="['/ghomala']" routerLinkActive="active"> Ghᴐmala' </a> </li>
-        <li *ngIf="this.currentUser?.admin || auth.isAuthenticated()"> <a [routerLink]="['/membres']" routerLinkActive="active">
-            Liste de membres </a> </li>
+        <li > <a [routerLink]="['/membres']" routerLinkActive="active">
+            Bottin </a> </li>
         <li class="dropdown" *ngIf="this.currentUser?.admin || auth.isAuthenticated()">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Administration
@@ -42,7 +44,7 @@
           </ul>
         </li>
 
-        <li class="dropdown" *ngIf="!!this.currentUser">
+        <li class="dropdown" >
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Mon dossier
             <span class="caret"></span>

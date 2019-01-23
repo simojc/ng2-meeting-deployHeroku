@@ -86,7 +86,8 @@
   
               <div class="form-group">
                 <label class="col-md-6"> Date statut </label>
-                <input type="text" class="form-control" formControlName="dt_statut" #dt_statut placeholder="YYYY-MM-DD" [(ngModel)]="tontpers.dt_statut" />
+                <input type="date" class="form-control" formControlName="dt_statut" #dt_statut placeholder="YYYY-MM-DD" [ngModel]="tontpers.dt_statut | date:'yyyy-MM-dd'"  >
+                 <!--  <input type="date"  [ngModel]="myDate | date:'yyyy-MM-dd'" (ngModelChange)="myDate = $event"> -->
               </div>
               <div *ngIf="angForm.controls['dt_statut'].invalid && (angForm.controls['dt_statut'].dirty || angForm.controls['dt_statut'].touched)"
                 class="alert alert-danger">

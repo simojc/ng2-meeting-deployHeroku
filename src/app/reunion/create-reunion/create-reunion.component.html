@@ -3,7 +3,7 @@
         {{ title }}
       </div>
   <hr>
-  <div >
+  <div class="col-md-6" >
     <form #newEvnmtForm="ngForm" (ngSubmit)="saveEvnmt(newEvnmtForm.value)" autocomplete="off" novalidate>
       <input type="hidden" id="groupe_id" name="groupe_id" hide [(ngModel)]="currentUser.groupe_id" />
       <table>
@@ -28,7 +28,8 @@
             <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.date?.invalid && newEvnmtForm.controls.date?.touched}">
               <label for="evnmtDate"> Date (YYYY-MM-DD) </label>
               <em *ngIf="newEvnmtForm.controls.date?.invalid && (newEvnmtForm.controls.date?.touched)">Required</em>
-              <input (ngModel)="evnmt.date" name="date" required id="evnmtDate" type="text" class="form-control" placeholder="Date  ..." />
+              <input [ngModel]="evnmt?.date | date:'yyyy-MM-dd'" name="date" required id="evnmtDate" type="date" class="form-control"  />
+             <!--  <input type="date"  [ngModel]="myDate | date:'yyyy-MM-dd'" (ngModelChange)="myDate = $event"> -->
             </div>
           </th>
           <th> </th>

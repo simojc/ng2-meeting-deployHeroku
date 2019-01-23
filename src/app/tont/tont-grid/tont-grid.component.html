@@ -1,16 +1,13 @@
-
 <form>
-
     <table>
         <tr>
-                <th width=25%></th>
-                <th width=30%></th>
-                <th width=20%></th>
-                <th width=10%></th>
+            <th width=25%></th>
+            <th width=30%></th>
+            <th width=20%></th>
+            <th width=10%></th>
         </tr>
         <tr>
             <th>
-
                 <div col-md-6>
                     <!--     <label class="input-group-addon"> Selectionner une tontine </label> -->
                     <select class="form-control" name="tont_id" #tont_id (change)="selectchange($event)">
@@ -21,7 +18,6 @@
                     </select>
                 </div>
             </th>
-
             <th>
                 <div class="input-group" col-md-6>
                     <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
@@ -38,16 +34,14 @@
                     </button>
                 </div>
             </th>
-
         </tr>
     </table>
 </form>
 
 <div *ngIf="pagedItems?.length>0">
-        <div>
-                <h3> Liste des tontineurs </h3>
-            </div>
-
+    <div>
+        <h3> Liste des tontineurs </h3>
+    </div>
     <table class="table table-striped table-bordered table-sm" cellspacing="0">
         <thead>
             <tr>
@@ -57,7 +51,7 @@
                 <th width=10%> <u> moisgain </u></th>
                 <th width=10%> <u> Montant part </u> </th>
                 <th width=20%> <u>Dernier cotisation</u></th>
-                <th width=10%> <u>  </u></th>
+                <th width=10%> <u> </u></th>
             </tr>
         </thead>
         <tbody>

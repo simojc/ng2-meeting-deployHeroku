@@ -1,21 +1,20 @@
-<div style="text-align: right;" class="row">
 
-</div>
+<div class="row">
 
-<br />
+<div class="col-md-6 sky " height="600" >
+    <h1>Espace membre</h1>
 
-<h1>Espace membre</h1>
-<br />
-<p>Vous devez vous enregistrer pour consulter cette section</p>
-<br />  <br />
-<div class="container-fluid">
+  <div class="col-md-10 " >
+      <br />
+      <h4>Vous devez vous enregistrer pour consulter cette section</h4>
+      <br /> 
 
-  <div class="col-md-4">
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off">
       <div class="form-group">
         <label for="email">Courriel</label>
         <em *ngIf="loginForm.controls.email?.invalid && (loginForm.controls.email?.touched || mouseoverLogin)">Required</em>
-        <input (ngModel)="email" name="email" required id="email" type="text" class="form-control" placeholder="Courriel..." pattern="[^ @]*@[^ @]*" />
+        <input (ngModel)="email" name="email" required id="email" type="text" class="form-control" placeholder="Courriel..."
+          pattern="[^ @]*@[^ @]*" />
       </div>
       <div class="form-group">
         <label for="password">Mot de passe</label>
@@ -26,7 +25,7 @@
       <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
         <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Connecter</button>
       </span>
-      <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+      <button type="button" (click)="cancel()" class="btn btn-default">Annuler</button>
     </form>
     <br />
     <div *ngIf="loginInvalid" class="alert alert-danger">
@@ -34,21 +33,20 @@
     </div>
 
     <br />
-    <br />
-    <p> Vous n'avez pas de compte ? </p> 
-    <a [routerLink]="['../../user/createuser']"> Inscrivez-vous </a>
-
- 
   
-  </div>
+    <h3>
+    <p> Vous n'avez pas de compte ? </p>
+    <a [routerLink]="['../../user/createuser']">  Inscrivez-vous </a>
 
-
-  <div class="col-md-6">
-    <img src='./assets/images/cheferie.jpeg' />
+    </h3>
   </div>
 
 </div>
-<br />
-<br />
-<br />
-<br />
+
+<div class="col-md-6 "  align = "right">
+    <img src='./assets/images/cheferie2.jpeg' width="500"  />
+  
+    <img src='./assets/images/cheferie.jpeg' width="500"  />    
+ </div>
+ 
+</div>

@@ -1,11 +1,11 @@
 <!--<div class="panel panel-primary">-->
 
-    <h1>Inscription</h1>
-<hr>
-  <div class="row">
+ 
+  <div class="row ">
 
-    <div class=" col-md-6 ">
-
+    <div class=" col-md-6 sky ">
+        <h1>Inscription</h1>
+       
       <form [formGroup]="angForm" (ngSubmit)="addUser(angForm.value)" autocomplete="off">
 
         <div class="form-group">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-group">
-          <label class="col-md-4"> Confirmation du mot de passe</label>
+          <label class="col-md-6"> Confirmation du mot de passe</label>
           <input type="password" class="form-control" formControlName="confirmPassword" #confirmPassword />
         </div>
         <p *ngIf=" angForm.controls['confirmPassword']?.errors?.notEquivalent"  > Les mots de passe sont différents </p>
@@ -49,5 +49,12 @@
       </div>
 
     </div>
+
+    <div class="col-md-6 "  align = "right">
+        <img src='./assets/images/cheferie2.jpeg' width="500"  />
+      
+        <img src='./assets/images/cheferie.jpeg' width="500"  />    
+     </div>
+
   </div>
 

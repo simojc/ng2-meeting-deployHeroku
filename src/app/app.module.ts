@@ -13,6 +13,8 @@ import { NavBarComponent  } from './nav/navbar.component';
 import { appRoutes } from './app.routes';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
+import { AccueilComponent } from './accueil/index';
+
 import {
   RpnpersService,
   PersService,
@@ -123,7 +125,8 @@ registerLocaleData(localeFr, 'fr');
     EditTontpersComponent,
     CreateEngmtPersComponent,
     EngmtGridComponent,
-    EditEngmtComponent
+    EditEngmtComponent,
+    AccueilComponent,
   ],
   imports: [
     BrowserModule,

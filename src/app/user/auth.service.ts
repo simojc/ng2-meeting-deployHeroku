@@ -5,34 +5,25 @@ import { Subject } from 'rxjs/Subject';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { IUser } from '../Models/index';
+import { IUser, IGroupe } from '../Models/index';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class AuthService {
 
   public currentUser: IUser;
+  token = this.getToken();
+
+  httpOptions = {
+     headers: new Headers({
+         'Content-Type': 'application/json',
+         'Authorization': 'Bearer ' + JSON.parse(this.token)
+     })
+ };
 
   // private endpointUrl = environment.API_URL;
   private endpointUrl = environment.API_URL_NODEJS + 'users/';
   constructor(private http: Http, private http_cli: HttpClient) { }
-
-  login_cli(email: string, password: string) {
-    return this.http_cli.post<any>(this.endpointUrl + 'authenticate', { email: email, password: password })
-      .map(res => {
-        // login successful if there's a jwt token in the response
-        if (res && res.token) {
-          // console.log('Dans le service JSON.stringify(user) :' + JSON.stringify(res.token))
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(res.user));
-          localStorage.setItem('token', JSON.stringify(res.token));
-          this.currentUser = res.user;
-          // console.log('Dans le service currentUser email :' + JSON.stringify(this.currentUser.email))
-        }
-
-        return res;
-      });
-  }
 
   addUser(user) {
     const uri = this.endpointUrl + 'register';
@@ -40,7 +31,7 @@ export class AuthService {
       res => console.log('Creation reussi'));
   }
 
-  loginUser(courriel: string, motpass: string) {
+  login(courriel: string, motpass: string) {
     return new Promise((resolve, reject) => {
       const headers = new Headers({ 'Content-Type': 'application/json' });
       const options = new RequestOptions({ headers: headers });
@@ -73,10 +64,13 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-/*   isAuthenticated() {
-    return !!this.currentUser;
-    ///  returne True si current User est rensigné (c-d-d si la propriété n'est pas vide)
-  } */
+
+  getGroupe(_id: number) {
+    const url = environment.API_URL_NODEJS;
+    return this.http.get(url + 'groupe/' + _id, this.httpOptions)
+    .map((response: Response) => <IGroupe>response.json())
+    .catch(this.handleError);
+  }
 
   public isAuthenticated(): boolean {
     const helper = new JwtHelperService();
@@ -110,5 +104,10 @@ export class AuthService {
     const url = this.endpointUrl + 'update';
     return this.http.put(url, JSON.stringify(this.currentUser), options);
   }
+
+  private handleError(error: Response) {
+    return Observable.throw(error);
+  }
+
 
 }

@@ -22,6 +22,12 @@ import {
   EditRpnComponent
 } from './rpn/index';
 
+
+
+import {
+  AccueilComponent,
+} from './accueil/index';
+
 import { TontComponent, CreateTontPersComponent,
   TontGridComponent, EditTontpersComponent
  } from './tont/index';
@@ -40,7 +46,8 @@ import { EngmtComponent,
 export const appRoutes = [
 
   { path: '404', component: Error404Component },
-  { path: '', redirectTo: '/reunions', pathMatch: 'full' },
+  { path: '', redirectTo: '/accueil', pathMatch: 'full' },
+ //  { path: '/', redirectTo: '/accueil', pathMatch: 'full' },
   { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
 
   { path: 'reunions/new', component: CreateReunionComponent , canActivate: [AuthGuard]  },
@@ -52,6 +59,7 @@ export const appRoutes = [
   { path: 'reunions/detail/new', component: CreateReuniondtlComponent, canActivate: [AuthGuard]  },
 
   { path: 'ghomala', component: GhomalaComponent },
+  { path: 'accueil', component: AccueilComponent },
 
   { path: 'rpn', component: RpnpersComponent, canActivate: [AuthGuard]  },
   { path: 'rpn/new', component: CreateRpnComponent, canActivate: [AuthGuard]  },
