@@ -42,6 +42,10 @@ button {
 html {
     height: 100%;
 }
+.sky{
+  background-image:url('http:/assets/images/sky.jpeg');
+  background-size: 1300px 700px;
+}
 
 .footer {
    position:fixed !important;
