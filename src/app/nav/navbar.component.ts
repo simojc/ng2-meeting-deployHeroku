@@ -23,7 +23,7 @@ export class NavBarComponent implements OnInit {
   foundSessions: ISession[];
   public currentUser: IUser;
   public groupe: IGroupe;
-  title = 'FermatSoft';
+  title = 'Todjom-Qc';
 
   constructor(public auth: AuthService, private router: Router, private alertService: AlertService)  {
   }
