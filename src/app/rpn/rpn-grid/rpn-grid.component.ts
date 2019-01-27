@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IUser, IRpnpers, IPers } from '../Models/index';
+import { IUser, IRpnpers, IPers } from '../../Models/index';
 // import { UserService } from '../user.service';
-import { AlertService, RpnpersService, AutresService, PagerService } from '../_services/index';
+import { AlertService, RpnpersService, AutresService, PagerService } from '../../_services/index';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'rpn.component.html',
+    templateUrl: 'rpn-grid.component.html',
     styles: []
 })
 
-export class RpnpersComponent implements OnInit {
+export class RpnGridComponent implements OnInit {
     currentUser: IUser;
     currentPers: IPers;
     // array of all items to be paged
@@ -19,6 +19,7 @@ export class RpnpersComponent implements OnInit {
     pager: any = {};
     // paged items
     pagedItems: any[];
+    public searchString: string;
 
     constructor(private alertService: AlertService, private rpnpersService: RpnpersService,
         private autresService: AutresService, private router: Router, private pagerService: PagerService) {
@@ -38,10 +39,9 @@ export class RpnpersComponent implements OnInit {
     }
 
     private loadRpnPers() {
-
         // console.log(' JSON.stringify(this.currentPers) =   ' + JSON.stringify(this.currentPers))
         if (!!this.currentPers) {
-            this.rpnpersService.getAllRpnCurrentPers(this.currentPers[0].id).subscribe(
+            this.rpnpersService.getAllRpnGroupe(this.currentUser.groupe_id).subscribe(
                 rpnpers => {
                     this.allItems = rpnpers;
                     this.setPage(1);

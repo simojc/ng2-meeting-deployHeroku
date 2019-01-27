@@ -5,11 +5,11 @@ import { AlertService, PersService, PagerService } from '../_services/index';
 
 @Component({
   moduleId: module.id,
-  templateUrl: 'pers.component.html',
+  templateUrl: 'membre.component.html',
   styles: []
 })
 
-export class PersComponent implements OnInit {
+export class MembreComponent implements OnInit {
   currentUser: IUser;
   // array of all items to be paged
   private allItems: any[] = [];
@@ -30,7 +30,7 @@ export class PersComponent implements OnInit {
   }
 
   private loadMembers() {
-    this.persService.getPersByType().subscribe(
+    this.persService.getMembres().subscribe(
       pers => {
         this.allItems = pers;
         this.setPage(1);

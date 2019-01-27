@@ -49,8 +49,9 @@
                           <label class="center-block">
                             Sexe
                             <select class="form-control" placeholder="Sexe... " formControlName="sexe" #sexe>
-                              <option value="M">Masculin</option>
-                              <option value="F">Féminin</option>
+                                <option value="Masculin">Masculin</option>
+                                <option value="Féminin">Féminin</option>
+                                <option value="Autre">Autres</option>
                               <option hidden selected> Sélectionner une valeur</option>
                             </select>
                           </label>
@@ -66,8 +67,9 @@
                   <th>
                       <div class="form-group">
                           <label class="center-block">
-                            Sélectionner le statut de la personne
-                            <select class="form-control" placeholder="Statut " formControlName="type" #type>
+                            Statut de la personne
+                            <select class="form-control" placeholder="Statut " formControlName="type" #type >
+                                <option  selected> Sélectionner une valeur</option>
                               <option *ngFor="let type of typePers" [value]="type.libelle"> {{type.libelle}}</option>
                             </select>
                           </label>
@@ -76,6 +78,9 @@
                           <div *ngIf="angForm.controls['type'].errors.required">
                             Le type de personne est obligatoire.
                           </div>
+                          <div *ngIf="angForm.controls['type'].errors.email">
+                              Format courriel non conforme .
+                            </div>
                         </div>
                   </th>
                 </tr>
@@ -120,11 +125,14 @@
                                       <div *ngIf="angForm.controls['email'].errors.required">
                                         Le courriel est obligatoire.
                                       </div>
+                                      <div *ngIf="angForm.controls['email'].errors.email">
+                                          Le format du courriel est invalide.
+                                        </div>
                                     </div>  
+                                    
                               </li>
                             </ol>
                           </fieldset>
-
                      
                     </th>
                   </tr>

@@ -41,7 +41,8 @@ export class CreateUserComponent {
   createForm() {
     this.angForm = this.fb.group({
      // user_id: ['', Validators.required], Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email] ],
+     // [’’, [Validators.required, Validators.minLength(5)]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     }, {validator: this.checkIfMatchingPasswords('password', 'confirmPassword')});

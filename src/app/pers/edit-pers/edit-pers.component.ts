@@ -39,7 +39,7 @@ export class EditPersComponent implements OnInit {
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       sexe: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', ],
       address: ['', Validators.required],
       city: '',
       country: '',
@@ -71,20 +71,33 @@ export class EditPersComponent implements OnInit {
       country: formValues.country,
 
     };
-    console.log('personne = ' +  JSON.stringify(personne)) ;
+     console.log('personne = ' +  JSON.stringify(personne)) ;
 
     this.persService.updatePersonne(personne, params['id']);
     // this.saveNewPersonne.emit();
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-     this.router.navigate(['membres']);
+     this.router.navigate(['personnes']);
     });
-
   }
+
+  formControlValueChanged() {
+    const emailControl = this.angForm.get('email');
+    this.angForm.get('type').valueChanges.subscribe(
+        (type: string) => {
+            console.log(type);
+            if (type === 'Membre') {
+              emailControl.setValidators([Validators.required]);
+            } else {
+              emailControl.clearValidators();
+            }
+            emailControl.updateValueAndValidity();
+        });
+}
 
   cancel() {
     // this.cancelAddPersonne.emit()
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-    this.router.navigate(['membres']);
+    this.router.navigate(['personnes']);
   }
 
 

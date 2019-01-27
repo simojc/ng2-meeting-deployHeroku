@@ -2,6 +2,15 @@
     <div>
       <h1 class="panel-title"> Les adhésions RPN </h1>
     </div>
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                <input type="text" class="form-control" name="searchString" placeholder=" Chercher par Nom et prénom" [(ngModel)]="searchString">
+            </div>
+        </div>
+    </form>
+
     <table class="table table-striped table-bordered table-sm" cellspacing="0" width="80%">
       <thead>
         <tr>
@@ -14,7 +23,7 @@
         </tr>
       </thead>         
   
-      <tr *ngFor="let item of pagedItems">
+      <tr *ngFor="let item of pagedItems | filter : 'nom_pers' : searchString; let i = index  ">
         <td>{{item.nom_pers}}</td>
         <td>{{item.mtrle}}</td>
         <td>{{item.dtadh | date: 'dd/MM/yyyy'}}</td>
@@ -52,3 +61,10 @@
     </div>
     <!-- End  pager -->
   </div>
+
+  <div  *ngIf="this.currentUser?.admin" align="left">
+      <button type="button" class="btn btn-primary"
+              (click)="add()">
+        Ajouter
+      </button>
+    </div>

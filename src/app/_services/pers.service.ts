@@ -36,8 +36,15 @@ export class PersService {
         .catch(this.handleError);
       }
 
-      getPersByType(): Observable<IPers[]> {
+      getMembres(): Observable<IPers[]> {
         return this.http.get(this.endpointUrl + 'pers?type=M&groupe=' + this.currentUser.groupe_id, this.httpOptions)
+        .map((response: Response) => <IPers[]>response.json())
+        .catch(this.handleError);
+      }
+
+      getPers(): Observable<IPers[]> {
+        console.log(this.endpointUrl + 'pers?groupe=' + this.currentUser.groupe_id);
+        return this.http.get(this.endpointUrl + 'pers?groupe=' + this.currentUser.groupe_id, this.httpOptions)
         .map((response: Response) => <IPers[]>response.json())
         .catch(this.handleError);
       }

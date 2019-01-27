@@ -44,8 +44,11 @@ export class AutresService {
     }
 
     getPersCurrentPers() {
-        // console.log('getPersCurrentPers this.currentUser.email =' + this.currentUser.email);
-        return this.http.get(this.endpointUrl + 'pers?email=' + this.currentUser.email, this.httpOptions)
+        // console.log('URL =' + this.endpointUrl + 'pers?email=' + this.currentUser.email);
+         // return this.http.get(this.endpointUrl + 'pers?type=M&groupe=' + this.currentUser.groupe_id, this.httpOptions)
+         const url = this.endpointUrl + 'pers?email=' + this.currentUser.email + '&groupe=' + this.currentUser.groupe_id;
+         console.log('url = ' + url);
+        return this.http.get(url, this.httpOptions)
             .map((response: Response) => <IPers>response.json())
             .catch(this.handleError);
     }

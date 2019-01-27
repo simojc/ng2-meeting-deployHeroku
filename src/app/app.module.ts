@@ -58,6 +58,7 @@ import {
   RpnpersComponent,
   CreateRpnComponent,
   EditRpnComponent,
+  RpnGridComponent
 } from './rpn/index';
 
 import { TontComponent,
@@ -67,7 +68,7 @@ import { TontComponent,
   EditTontpersComponent
 } from './tont/index';
 
-import { PersComponent, CreatePersComponent, EditPersComponent } from './pers/index';
+import { MembreComponent, CreatePersComponent, EditPersComponent, PersGridComponent } from './pers/index';
 import { EngmtComponent,
    EngmtThumbnailComponent,
     CreateEngmtPersComponent, EngmtGridComponent,
@@ -115,9 +116,11 @@ registerLocaleData(localeFr, 'fr');
     RpnpersComponent,
     CreateRpnComponent,
     EditRpnComponent,
+    RpnGridComponent,
     EngmtComponent,
     TontComponent,
-    PersComponent, CreatePersComponent, EditPersComponent,
+    MembreComponent, CreatePersComponent, EditPersComponent,
+    PersGridComponent,
     TontThumbnailComponent,
     EngmtThumbnailComponent,
     CreateTontPersComponent,

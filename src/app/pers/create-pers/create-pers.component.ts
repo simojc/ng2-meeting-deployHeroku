@@ -27,6 +27,7 @@ export class CreatePersComponent implements OnInit {
    // this.loadLocations();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     // console.log('this.currentUser= ' + JSON.stringify(this.currentUser));
+    this.onChanges();
   }
 
   createForm() {
@@ -36,7 +37,8 @@ export class CreatePersComponent implements OnInit {
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       sexe: ['', Validators.required],
-      email: ['', Validators.required, Validators.email ],
+     // email: ['', Validators.required, Validators.email ],
+      email: ['',  ],
       telcel: '',
       telres: '',
       emploi: '',
@@ -68,17 +70,45 @@ export class CreatePersComponent implements OnInit {
       titre_adh: formValues.titre_adh,
       groupe_id: this.currentUser.groupe_id
     };
-    console.log('personne = ' + JSON.stringify(personne));
+   // console.log('personne = ' + JSON.stringify(personne));
     this.persService.addPersonne(personne);
     this.saveNewPersonne.emit();
      // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-    this.router.navigate(['membres']);
+    this.router.navigate(['personnes']);
+  }
+
+  formControlValueChanged() {
+      const emailControl = this.angForm.get('email');
+      this.angForm.get('type').valueChanges.subscribe(
+          (type: string) => {
+              console.log(type);
+              if (type === 'Membre') {
+                emailControl.setValidators([Validators.required, Validators.email]);
+              } else {
+                emailControl.clearValidators();
+              }
+              emailControl.updateValueAndValidity();
+          });
+  }
+
+  onChanges(): void {
+    const emailControl = this.angForm.get('email');
+      this.angForm.get('type').valueChanges.subscribe(
+        (type: string) => {
+            console.log(type);
+            if (type === 'Membre') {
+              emailControl.setValidators([Validators.required, Validators.email]);
+            } else {
+              emailControl.clearValidators();
+            }
+            emailControl.updateValueAndValidity();
+        });
   }
 
   cancel() {
     this.cancelAddPersonne.emit();
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-    this.router.navigate(['membres']);
+    this.router.navigate(['personnes']);
   }
 
 }

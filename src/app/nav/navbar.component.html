@@ -25,8 +25,8 @@
 
         <li><a [routerLink]="['/ghomala']" routerLinkActive="active"> Ghᴐmala' </a> </li>
         <li > <a [routerLink]="['/membres']" routerLinkActive="active">
-            Bottin </a> </li>
-        <li class="dropdown" *ngIf="this.currentUser?.admin || auth.isAuthenticated()">
+            Bottin membes </a> </li>
+<!--         <li class="dropdown" *ngIf="this.currentUser?.admin || auth.isAuthenticated()">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Administration
             <span class="caret"></span>
@@ -42,7 +42,23 @@
             <li> <a [routerLink]="['user/home']"> Utilisateurs </a> </li>
             
           </ul>
-        </li>
+        </li> -->
+
+        <li class="dropdown" *ngIf="this.currentUser?.admin || auth.isAuthenticated()">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Administration
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li> <a [routerLink]="['reunions/tableau']"> Assemblées Générales </a> </li>
+              <li> <a [routerLink]="['personnes']"> Membres et proches </a> </li>
+              <li><a [routerLink]="['rpngrid']" routerLinkActive="active"> RPN </a></li>
+              <li> <a [routerLink]="['tontpersgrid']"> Tontines </a> </li>
+              <li> <a [routerLink]="['engmtpersgrid']"> Engagements </a> </li>
+              <li> <a [routerLink]="['user/home']"> Utilisateurs </a> </li>
+              
+            </ul>
+          </li>
 
         <li class="dropdown" >
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -52,7 +68,7 @@
           <ul class="dropdown-menu">
             <li><a [routerLink]="['/engmtpers']" routerLinkActive="active"> Mes engagements </a></li>
             <li><a [routerLink]="['/tontpers']" routerLinkActive="active"> Mes tontines </a></li>
-            <li><a [routerLink]="['rpn']" routerLinkActive="active"> Mon RPN </a></li>
+            <li><a [routerLink]="['/rpn']" routerLinkActive="active"> Mon RPN </a></li>
             <li><a [routerLink]="['user/profile']"> Mon profil </a> </li>
             <li>
               <a (click)="logout()"> Déconnexion </a>

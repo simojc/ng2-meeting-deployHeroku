@@ -24,15 +24,21 @@ export class RpnpersService {
     // private endpointUrl = environment.API_URL;
     private endpointUrl = environment.API_URL_NODEJS;
 
-    getAll(resp_id: number) {
+    getAllRpnCurrentPers(resp_id: number) {
       // console.log(this.endpointUrl + 'rpnpers?resp_id = ' + resp_id);
       // return this.httpClient.get<IRpnpers[]>(this.endpointUrl + 'rpnpers?resp_id=' + resp_id);
-
       return this.http.get(this.endpointUrl + 'rpnpers?resp_id=' + resp_id, this.httpOptions)
       .map((response: Response) => <IRpnpers[]>response.json())
       .catch(this.handleError);
     }
 
+    getAllRpnGroupe(groupe_id: number) {
+      // console.log(this.endpointUrl + 'rpnpers?resp_id = ' + resp_id);
+      // return this.httpClient.get<IRpnpers[]>(this.endpointUrl + 'rpnpers?resp_id=' + resp_id);
+      return this.http.get(this.endpointUrl + 'rpngroupe?groupe_id=' + groupe_id, this.httpOptions)
+      .map((response: Response) => <IRpnpers[]>response.json())
+      .catch(this.handleError);
+    }
 
     addRpnpers(rpnpers) {
       const uri = this.endpointUrl + 'rpnpers';

@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { IUser, IEvnmt } from '../../Models/index';
 import { EvnmtService } from '../shared/evnmt.service';
@@ -48,7 +50,10 @@ export class ReunionGridComponent implements OnInit {
     }
 
     EditReunion(id) {
-        this.router.navigate(['/evnmt/editEvnmt/', id]);
+        // this.router.navigate(['/reunions/edit/', id]);
+
+        this.router.navigate(['reunions/tableau']);
+
       }
 
     // Nouveau  code pour pagination
@@ -60,5 +65,8 @@ export class ReunionGridComponent implements OnInit {
        // console.log(" this.pagedItems = " + JSON.stringify(this.pagedItems));
     }
 
+    add() {
+        this.router.navigate(['/reunions/new']);
+      }
 
 }

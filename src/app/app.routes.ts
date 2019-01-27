@@ -19,7 +19,8 @@ import { GhomalaComponent } from './ghomala/index';
 import {
   RpnpersComponent,
   CreateRpnComponent,
-  EditRpnComponent
+  EditRpnComponent,
+  RpnGridComponent
 } from './rpn/index';
 
 
@@ -33,9 +34,10 @@ import { TontComponent, CreateTontPersComponent,
  } from './tont/index';
 
 import {
-  PersComponent,
+  MembreComponent,
   CreatePersComponent,
-  EditPersComponent
+  EditPersComponent,
+  PersGridComponent
 } from './pers/index';
 
 import { EngmtComponent,
@@ -62,9 +64,12 @@ export const appRoutes = [
   { path: 'accueil', component: AccueilComponent },
 
   { path: 'rpn', component: RpnpersComponent, canActivate: [AuthGuard]  },
+  { path: 'rpngrid', component: RpnGridComponent, canActivate: [AuthGuard]  },
+
   { path: 'rpn/new', component: CreateRpnComponent, canActivate: [AuthGuard]  },
   { path: 'rpn/edit/:id', component: EditRpnComponent, canActivate: [AuthGuard]  },
-  { path: 'membres', component: PersComponent, canActivate: [AuthGuard]  },
+  { path: 'personnes', component: PersGridComponent, canActivate: [AuthGuard]  },
+  { path: 'membres', component: MembreComponent, canActivate: [AuthGuard]  },
   { path: 'membres/new', component: CreatePersComponent, canActivate: [AuthGuard]  },
   { path: 'membres/edit/:id', component: EditPersComponent, canActivate: [AuthGuard]  },
   { path: 'tontpers', component: TontComponent, canActivate: [AuthGuard]  },
