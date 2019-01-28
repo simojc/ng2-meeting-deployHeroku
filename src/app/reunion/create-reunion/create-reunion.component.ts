@@ -36,13 +36,13 @@ export class CreateReunionComponent {
     this.evnmtService.saveEvnmt(formValues).subscribe(evnmt => {
        console.log(formValues);
       this.isDirty = false;
-      this.router.navigate(['/reunions']);
+      this.router.navigate(['/reunions/tableau']);
     });
   }
 
   cancel() {
     this.isDirty = false;
-    this.router.navigate(['/reunions']);
+    this.router.navigate(['/reunions/tableau']);
 
   }
 }
