@@ -2,12 +2,14 @@ import { Routes } from '@angular/router';
 
 import {
   CreateReunionComponent,
+  EditReunionComponent,
   ReunionsListComponent,
   EvnmtResolver,
   EvnmtListResolver,
   EvnmtDetailsComponent,
   CreateReuniondtlComponent,
-  ReunionGridComponent
+  ReunionGridComponent,
+  EditReuniondtlComponent
 } from './reunion/index';
 
 import { Error404Component } from './errors/404.component';
@@ -22,8 +24,6 @@ import {
   EditRpnComponent,
   RpnGridComponent
 } from './rpn/index';
-
-
 
 import {
   AccueilComponent,
@@ -46,13 +46,14 @@ import { EngmtComponent,
  } from './engmt/index';
 
 export const appRoutes = [
-
   { path: '404', component: Error404Component },
   { path: '', redirectTo: '/accueil', pathMatch: 'full' },
  //  { path: '/', redirectTo: '/accueil', pathMatch: 'full' },
   { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
 
   { path: 'reunions/new', component: CreateReunionComponent , canActivate: [AuthGuard]  },
+  { path: 'reunions/edit/:id', component: EditReunionComponent, canActivate: [AuthGuard]  },
+  { path: 'reuniondtl/edit/:id', component: EditReuniondtlComponent, canActivate: [AuthGuard]  },
   { path: 'reunions/tableau', component: ReunionGridComponent },
   { path: 'reunions', component: ReunionsListComponent , resolve: { evnmts: EvnmtListResolver } },
   // { path: 'reunions', component: ReunionsListComponent },
@@ -70,8 +71,8 @@ export const appRoutes = [
   { path: 'rpn/edit/:id', component: EditRpnComponent, canActivate: [AuthGuard]  },
   { path: 'personnes', component: PersGridComponent, canActivate: [AuthGuard]  },
   { path: 'membres', component: MembreComponent, canActivate: [AuthGuard]  },
-  { path: 'membres/new', component: CreatePersComponent, canActivate: [AuthGuard]  },
-  { path: 'membres/edit/:id', component: EditPersComponent, canActivate: [AuthGuard]  },
+  { path: 'personnes/new', component: CreatePersComponent, canActivate: [AuthGuard]  },
+  { path: 'personnes/edit/:id', component: EditPersComponent, canActivate: [AuthGuard]  },
   { path: 'tontpers', component: TontComponent, canActivate: [AuthGuard]  },
   { path: 'engmtpers', component: EngmtComponent, canActivate: [AuthGuard]  },
   { path: 'engmtpers/edit/:id', component: EditEngmtComponent, canActivate: [AuthGuard]  },

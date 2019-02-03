@@ -16,9 +16,6 @@ import { IEvnmtdtl, IEvnmt, IUser } from '../../Models/index';
 					</div>
 				</div>
 		</div>
-		<div style="text-align: right;" class="row">
-				<a [routerLink]="['/reunions/new']" >  Ajout d'une séance de l'AG </a>
-			</div>
 		 `
 })
 

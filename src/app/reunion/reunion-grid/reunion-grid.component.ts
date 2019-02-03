@@ -15,6 +15,8 @@ export class ReunionGridComponent implements OnInit {
     evnmts: IEvnmt[] = [];
     public startDate: any;
     public endDate: any;
+    today: string;
+
     // array of all items to be paged
     private allItems: any[] = [];
     // pager object
@@ -32,6 +34,8 @@ export class ReunionGridComponent implements OnInit {
     }
     ngOnInit() {
         this.loadAllReunions();
+        const now: Date = new Date();
+        this.today = now.toISOString();
     }
 
     deleteEvnmt(_id: string) {
@@ -50,10 +54,7 @@ export class ReunionGridComponent implements OnInit {
     }
 
     EditReunion(id) {
-        // this.router.navigate(['/reunions/edit/', id]);
-
-        this.router.navigate(['reunions/tableau']);
-
+         this.router.navigate(['/reunions/edit/', id]);
       }
 
     // Nouveau  code pour pagination

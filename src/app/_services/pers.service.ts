@@ -73,7 +73,7 @@ export class PersService {
         res => console.log('Creation reussi'));
     }
 
-    editPersonne(id) {
+/*     editPersonne(id) {
       const uri = this.endpointUrl + 'pers/' + id;
        console.log('uri= ' + uri);
       return this
@@ -83,7 +83,7 @@ export class PersService {
           console.log('this.httpOptions ' + JSON.stringify(this.httpOptions) );
           return res;
         });
-    }
+    } */
 
     updatePersonne(personne, id) {
       const uri = this.endpointUrl + 'pers/' + id;

@@ -17,7 +17,6 @@ export class EditPersComponent implements OnInit {
   angForm: FormGroup;
   title = 'Modifier personne';
   constructor(private route: ActivatedRoute, private router: Router, private persService: PersService, private fb: FormBuilder,
-    private autresService: AutresService,
     private alertService: AlertService) {
     this.createForm();
    // this.loadLocations();
@@ -71,7 +70,7 @@ export class EditPersComponent implements OnInit {
       country: formValues.country,
 
     };
-     console.log('personne = ' +  JSON.stringify(personne)) ;
+   //  console.log('personne = ' +  JSON.stringify(personne)) ;
 
     this.persService.updatePersonne(personne, params['id']);
     // this.saveNewPersonne.emit();

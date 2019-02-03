@@ -1,8 +1,10 @@
 <div [routerLink]="['/reunions', evnmt.id]" class="well hoverwel thumbnail">     
      <div  class="d-inline" > 
-       <h2 > {{ evnmt?.nom }}   </h2>   
+       <h2 > {{ evnmt?.nom }}   </h2> 
+       
     </div>       
       <div>
+          
           <div> Date: {{ evnmt?.date | date:'fullDate'}} </div>      
           <div> Heure début: {{evnmt.hrdeb }} </div>        
           <div>  statut: {{evnmt.statut}}  </div>        
@@ -13,8 +15,10 @@
               <span> Adresse: {{evnmt.address}}  </span>
               <span class="pad-left"> {{evnmt.city}}, , {{evnmt.country}}</span>
           </div>
-          <div style="display: inline-block; text-align: right; width: 100%">
-                <a routerLink="/reunions/{{evnmt.id}}">  <h5> Voir Detail </h5> </a>
+          
+          <div *ngIf="evnmt.date < today" style="display: inline-block; text-align: right; width: 100%">
+           
+            <a routerLink="/reunions/{{evnmt.id}}">  <h5> Voir compte rendu </h5> </a>
           </div>
       </div>
     

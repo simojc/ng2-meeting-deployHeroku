@@ -28,6 +28,7 @@ import {
 
   import {
         CreateReunionComponent,
+        EditReunionComponent,
         ReunionsListComponent,
         ReunionsThumbnailComponent,
         EvnmtListResolver,
@@ -40,7 +41,8 @@ import {
         AuthGuard,
         AlertComponent,
         FooterComponent,
-        ReunionGridComponent
+        ReunionGridComponent,
+        EditReuniondtlComponent,
     } from './reunion/index';
 
     import { FilterPipe, SortGridPipe, DateRangePipe } from './_directives/search-by-filter.pipe';
@@ -108,6 +110,8 @@ registerLocaleData(localeFr, 'fr');
     EvnmtDetailsComponent,
     ReuniondtllListComponent,
     CreateReuniondtlComponent,
+    EditReunionComponent,
+    EditReuniondtlComponent,
    // MyGridApplicationComponent,
     RedComponentComponent,
     GroupeComponent,

@@ -32,7 +32,7 @@ export class EvnmtService {
       .catch(this.handleError);
   }
 
-  getEvnmt(id: number): Observable<IEvnmt> {
+  getEvnmtById(id: number): Observable<IEvnmt> {
     return this.http.get(this.endpointUrl + 'evnmts/' + id, this.httpOptions).map((response: Response) => {
       return <IEvnmt>response.json();
     }).catch(this.handleError);
@@ -44,6 +44,15 @@ export class EvnmtService {
     this.httpOptions).map((response: Response) => {
         return response.json();
       }).catch(this.handleError);
+  }
+
+  updateEvnmt(evnmt, id) {
+    const uri = this.endpointUrl + 'evnmts/' + id;
+    console.log('uri = ' + JSON.stringify(uri));
+    this
+      .http
+      .put(uri, evnmt, this.httpOptions)
+      .subscribe(res => console.log('Done'));
   }
 
   private handleError(error: Response) {

@@ -1,19 +1,27 @@
-
 <div class="row" *ngFor="let evnmtdtl of evnmtdtls">
   <div class="col-md-10">
-    <collapsible-well [title]= "evnmtdtl.entete">  
-      <!-- <p>  -->
-          <div class="row">
-              <div class="col-md-4">
-                  <span>  Responsable: {{evnmtdtl.resp}} </span> &nbsp; &nbsp; &nbsp; &nbsp;
-                   <span>  Durée: {{evnmtdtl.duree}} </span> 
-              </div>
-            </div>
-          <!-- </p> -->
-            <span> <u> Resumé: </u> </span>
-              <p> {{evnmtdtl.resume}}</p>
-              <span> <u> Détail: </u> </span> 
-            <p> {{evnmtdtl.contenu}}</p>
+    <collapsible-well [title]="evnmtdtl.entete">
+      <div class="row">
+        <div class="col-md-4">
+          <span> <u> Responsable:</u> {{evnmtdtl.resp}} </span> &nbsp; &nbsp; &nbsp; &nbsp;
+          <span> <u> Durée: </u> {{evnmtdtl.duree}} </span>
+        </div>
+      </div>
+      <!-- 
+      <span> <u> Resumé: </u> </span>
+      <p> {{evnmtdtl.resume}}</p>
+      <span> <u> Détail: </u> </span>
+      <p> {{evnmtdtl.contenu}}</p> 
+     -->
+      <br />
+      <div innerHTML="{{evnmtdtl.contenu}}"></div>
     </collapsible-well>
+
   </div>
+  <div class="col-md-2" *ngIf="!!this.currentUser?.admin">
+      <a [routerLink]="" (click)="editEvnmtdtl(evnmtdtl.id)"> <h4> Modifier </h4> </a>
+    </div>
+
+
+
 </div>

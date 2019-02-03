@@ -1,10 +1,10 @@
-<div class="row">
+<div class="row" *ngIf="evnmt">
     <div class="panel-heading">
         {{ title }}
       </div>
   <hr>
   
-    <form #newEvnmtForm="ngForm" (ngSubmit)="saveEvnmt(newEvnmtForm.value)" autocomplete="off" novalidate>
+    <form #newEvnmtForm="ngForm" (ngSubmit)="updateEvnmt(newEvnmtForm.value)" autocomplete="off" novalidate>
       <input type="hidden" id="groupe_id" name="groupe_id" hide [(ngModel)]="currentUser.groupe_id" />
       <div class="col-md-6" >
       <table>
@@ -18,7 +18,7 @@
             <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.nom?.invalid && newEvnmtForm.controls.nom?.touched}">
               <label for="nom">Titre</label>
               <em *ngIf="newEvnmtForm.controls.nom?.invalid && (newEvnmtForm.controls.nom?.touched)">Required</em>
-              <input (ngModel)="evnmt.nom" name="nom" required id="nom" type="text" class="form-control" placeholder="Titre..." />
+              <input [(ngModel)]="evnmt.nom" name="nom" required id="nom" type="text" class="form-control" placeholder="Titre..." />
             </div>
           </th>
           <th> </th>
@@ -29,7 +29,7 @@
             <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.date?.invalid && newEvnmtForm.controls.date?.touched}">
               <label for="evnmtDate"> Date (YYYY-MM-DD) </label>
               <em *ngIf="newEvnmtForm.controls.date?.invalid && (newEvnmtForm.controls.date?.touched)">Required</em>
-              <input [ngModel]="evnmt?.date | date:'yyyy-MM-dd'" name="date" required id="evnmtDate" type="date" class="form-control"  />
+              <input [ngModel]="evnmt.date | date:'yyyy-MM-dd'" (ngModelChange)="evnmt.date = $event"  name="date" required id="evnmtDate" type="date" class="form-control"  />
              <!--  <input type="date"  [ngModel]="myDate | date:'yyyy-MM-dd'" (ngModelChange)="myDate = $event"> -->
             </div>
           </th>
@@ -38,7 +38,7 @@
             <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.hrdeb?.invalid && newEvnmtForm.controls.hrdeb?.touched}">
               <label for="evnmtTime"> Heure (exemple: 17 H 30 )</label>
               <em *ngIf="newEvnmtForm.controls.hrdeb?.invalid && (newEvnmtForm.controls.hrdeb?.touched)">Required</em>
-              <input (ngModel)="evnmt.hrdeb" name="hrdeb" required id="evnmtTime" type="text" class="form-control"
+              <input [(ngModel)]="evnmt.hrdeb" name="hrdeb" required id="evnmtTime" type="text" class="form-control"
                 placeholder="Heure de début..." />
             </div>
           </th>
@@ -48,7 +48,7 @@
             <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.famaccueil?.invalid && newEvnmtForm.controls.famaccueil?.touched}">
               <label for="evnmtFamaccueil"> Famille d'accueil </label>
               <em *ngIf="newEvnmtForm?.controls?.famaccueil?.invalid && (newEvnmtForm?.controls?.famaccueil?.touched)">Required</em>
-              <input (ngModel)="evnmt.famaccueil" name="famaccueil" required id="evnmtFamaccueil" type="text" class="form-control"
+              <input [(ngModel)]="evnmt.famaccueil" name="famaccueil" required id="evnmtFamaccueil" type="text" class="form-control"
                 placeholder="Famille d'accueil..." />
             </div>
           </th>
@@ -59,7 +59,7 @@
                   <em *ngIf="newEvnmtForm?.controls?.statut?.invalid && (newEvnmtForm?.controls?.statut?.touched)">Required</em>
                   <!-- <input (ngModel)="statut" name="statut" required id="evnmtStatut" type="text" class="form-control"
                     placeholder="Statut..." /> -->
-                    <select (ngModel)="evnmt.statut" name="statut" class="form-control" placeholder="Statut... " >
+                    <select [(ngModel)]="evnmt.statut" name="statut" class="form-control" placeholder="Statut... " >
                         <option selected>À venir</option>
                         <option>Annulée </option>
                         <option>Complétée </option>
@@ -74,7 +74,7 @@
             <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.descr?.invalid && newEvnmtForm.controls.descr?.touched}">
               <label for="evnmtDescr"> Description</label>
               <em *ngIf="newEvnmtForm.controls.descr?.invalid && (newEvnmtForm.controls.descr?.touched)">Required</em>
-              <textarea (ngModel)="evnmt.descr" name="descr" required class="form-control rounded-0" id="evnmtDescr"
+              <textarea [(ngModel)]="evnmt.descr" name="descr" required class="form-control rounded-0" id="evnmtDescr"
                 placeholder="Decription..." rows="1"></textarea>
             </div>
           </th>
@@ -95,17 +95,17 @@
           <tr>
             <th>
               <label for=address> Numéro, rue, code postal </label>
-              <input (ngModel)="evnmt.address" name="address" id="address" type="text" class="form-control" placeholder="addresse..." />
+              <input [(ngModel)]="evnmt.address" name="address" id="address" type="text" class="form-control" placeholder="addresse..." />
             </th>
             <th></th>
             <th>
               <label for=city> Ville </label>
-              <input (ngModel)="evnmt.city" name="city" id="city" type="text" class="form-control" placeholder="Ville..." />
+              <input [(ngModel)]="evnmt.city" name="city" id="city" type="text" class="form-control" placeholder="Ville..." />
             </th>
             <th></th>
             <th>
               <label for=country> Pays </label>
-              <input (ngModel)="evnmt.country" name="country" id="country" type="text" class="form-control" placeholder="Pays..." />
+              <input [(ngModel)]="evnmt.country" name="country" id="country" type="text" class="form-control" placeholder="Pays..." />
             </th>
           </tr>
         </table>
@@ -120,7 +120,7 @@
         <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.contenu?.invalid && newEvnmtForm.controls.contenu?.touched}">
             <label for="evnmtContenu"> Ordre du jour</label>
             <em *ngIf="newEvnmtForm.controls.contenu?.invalid && (newEvnmtForm.controls.contenu?.touched)">Required</em>
-            <textarea (ngModel)="evnmt.contenu" name="contenu" id="contenu" required class="form-control rounded-0" placeholder="Contenu..."
+            <textarea [(ngModel)]="evnmt.contenu" name="contenu" id="contenu"  class="form-control rounded-0" placeholder="Contenu..."
               id="evnmtContenu" rows="12"></textarea>
           </div>
   
@@ -129,8 +129,3 @@
     </form>
 
 </div>
-
-
-
-
-

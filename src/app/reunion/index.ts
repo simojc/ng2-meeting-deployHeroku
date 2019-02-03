@@ -1,6 +1,7 @@
 export * from './reunions-list/reunions-list.component';
 export * from './reunions-thumbnail/reunions-thumbnail.component';
 export * from './create-reunion/create-reunion.component';
+export * from './edit-reunion/edit-reunion.component';
 export * from './reunion-grid/reunion-grid.component';
 export * from './reunions-list-resolver.service';
 export * from './shared/index';

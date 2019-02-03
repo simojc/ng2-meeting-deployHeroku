@@ -16,13 +16,21 @@ import { IEvnmt } from '../../Models/index';
 	`]
 })
 
-export class ReunionsThumbnailComponent {
+export class ReunionsThumbnailComponent implements OnInit {
 
   // @Input() evnmt: IEvnmt
   _evnmt: IEvnmt;
 
-  constructor(  private router: Router, private route: ActivatedRoute) {
-    // this.route.params.subscribe(params => console.log(params));
+  today: string;
+
+  // now = new Date;
+
+  constructor(private router: Router, private route: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+      const now: Date = new Date();
+      this.today = now.toISOString();
   }
 
   @Input()

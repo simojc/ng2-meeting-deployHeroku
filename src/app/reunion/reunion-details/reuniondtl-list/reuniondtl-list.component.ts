@@ -1,12 +1,13 @@
-import { Component, Input, OnChanges } from '@angular/core'
+import { Component, Input, OnChanges } from '@angular/core';
 
-import { IEvnmtdtl } from '../../../Models/index';
+import { IEvnmtdtl, IUser } from '../../../Models/index';
 import { restrictedWords } from '../../../_directives/index';
 
 import { AuthService } from '../../../user/auth.service';
 import { AlertService, AutresService, EvnmtdtlService } from '../../../_services/index';
-
+import {  Router } from '@angular/router';
 // import { VoterService } from '../voter.service'
+
 
 @Component({
   selector: 'reuniondtl-list',
@@ -19,8 +20,11 @@ export class ReuniondtllListComponent implements OnChanges {
   @Input() sortBy: string;
   @Input() evnmtId: number;
   visibleEvnmtdtls: IEvnmtdtl[] = [];
+  currentUser: IUser;
 
-  constructor(private auth: AuthService, private evnmtdtlService: EvnmtdtlService) {  }
+  constructor(private router: Router, private auth: AuthService, private evnmtdtlService: EvnmtdtlService) { 
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+   }
 
     ngOnChanges() {
       if (this.evnmtdtls) {
@@ -28,13 +32,18 @@ export class ReuniondtllListComponent implements OnChanges {
       }
     }
 
+    editEvnmtdtl(id) {
+      this.router.navigate(['/reuniondtl/edit/', id]);
+    }
+
 }
 
+
 function sortByTitleAsc(s1: IEvnmtdtl, s2: IEvnmtdtl) {
-  if (s1.title > s2.title) {return 1;}
+  if (s1.title > s2.title) {return 1; }
   else 
   if (s1.title === s2.title) { return 0; }
-  else {return -1;}
+  else {return -1; }
 }
 
 function sortByOrdreAsc(s1: IEvnmtdtl, s2: IEvnmtdtl) {

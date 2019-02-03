@@ -31,10 +31,10 @@
                 <th width=15%> <u> Nom </u></th>
                 <th width=15%> <u> Date </u> </th>
                 <th width=10%><u>Heure</u> </th>
-                <th width=20%><u>Famille accueil</u> </th>
-                <th width=20%><u>Adresse</u> </th>
-                <th width=5%> <u></u></th>
-                <th width=15%> <u>Action</u></th>
+                <th width=15%><u>Famille accueil</u> </th>
+                <th width=25%><u>Adresse</u> </th>
+                <th width=3%> <u></u></th>
+                <th width=12%> <u>Action</u></th>
             </tr>
         </thead>
         <tbody>
@@ -52,9 +52,11 @@
                 </td>
 
                 <td>
-                    <a routerLink="/reunions/{{item.id}}">
-                        Voir détails
-                    </a>
+                    <div *ngIf="item.date < today">
+                        <a routerLink="/reunions/{{item.id}}">
+                            Compte rendu
+                        </a>
+                    </div>
                 </td>
 
             </tr>

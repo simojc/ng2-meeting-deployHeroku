@@ -47,9 +47,7 @@ export class LoginComponent implements OnInit {
       res => {
         location.reload();
         this.router.navigate(['/user/profile']);
-
-         this.alertService.success(' login complété avec sussès', true);
-
+         /// this.alertService.success(' login complété avec sussès', true);
         this.loading = false;
       },
       err => {

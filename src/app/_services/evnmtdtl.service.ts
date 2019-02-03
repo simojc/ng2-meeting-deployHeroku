@@ -47,6 +47,15 @@ export class EvnmtdtlService {
       }).catch(this.handleError);
   }
 
+  updateEvnmtdtl(evnmtdtl, id) {
+    const uri = this.endpointUrl + 'evnmtdtls/' + id;
+    console.log('uri = ' + JSON.stringify(uri));
+    this
+      .http
+      .put(uri, evnmtdtl, this.httpOptions)
+      .subscribe(res => console.log('Done'));
+  }
+
   private handleError(error: Response) {
     return Observable.throw(error.statusText);
   }

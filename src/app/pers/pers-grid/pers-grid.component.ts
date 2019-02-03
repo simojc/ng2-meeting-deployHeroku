@@ -41,11 +41,11 @@ export class PersGridComponent implements OnInit {
   }
 
   EditPers(id) {
-    this.router.navigate(['/membres/edit', id]);
+    this.router.navigate(['/personnes/edit', id]);
   }
 
   addPers() {
-    this.router.navigate(['/membres/new']);
+    this.router.navigate(['/personnes/new']);
   }
 
   // Nouveau  code pour pagination
