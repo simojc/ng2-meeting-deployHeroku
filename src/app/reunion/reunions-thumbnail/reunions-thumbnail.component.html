@@ -15,17 +15,17 @@
             <span class="pad-left"> {{evnmt.city}}, , {{evnmt.country}}</span>
         </div>
       
-        <div  style="display: inline-block; text-align: right; width: 100%">
+     <!--    <div *ngIf="evnmt.date < today" style="display: inline-block; text-align: right; width: 100%">
             <a routerLink="/reunions/{{evnmt.id}}">
                 <h5> Voir compte rendu 1 </h5>
             </a>
-        </div>
+        </div> -->
 
-     <!--    <div *ngIf="datecompare(now,now) " style="display: inline-block; text-align: right; width: 100%">
-                <a routerLink="/reunions/{{evnmt.id}}">
-                    <h5> Voir compte rendu  2 </h5>
-                </a>
-            </div> -->
+        <div *ngIf="datecompare(now,evnmt.date)" style="display: inline-block; text-align: right; width: 100%">
+            <a routerLink="/reunions/{{evnmt.id}}">
+                <h5> Voir compte rendu 2 </h5>
+            </a>
+        </div>
 
         <!-- ng-if="(Date | date:'dd/MM/yyyy') == (question.DateTimeEnd | date:'dd/MM/yyyy')"
  -->

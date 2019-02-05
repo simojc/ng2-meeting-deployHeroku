@@ -41,7 +41,8 @@ export class ReunionsThumbnailComponent implements OnInit {
     return this._evnmt;
   }
 
-  datecompare(date1, date2) {
+  datecompare(date1, date) {
+    const date2 = new Date(date);
     const day1 = date1.getDate();
     const mon1 = date1.getMonth();
     const year1 = date1.getFullYear();
