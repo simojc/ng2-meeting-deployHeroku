@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../user/auth.service';
-import { ISession, IGroupe } from '../Models/index';
+import { IGroupe } from '../Models/index';
 // import { EventService } from '../events/index';
 import { Router } from '@angular/router';
 import {  IUser } from '../Models/index';
@@ -20,7 +20,6 @@ import {  AlertService } from '../_services/index';
 
 export class NavBarComponent implements OnInit {
   searchTerm: string = '';
-  foundSessions: ISession[];
   public currentUser: IUser;
   public groupe: IGroupe;
   title = 'Todjom-Qc';
@@ -60,7 +59,5 @@ export class NavBarComponent implements OnInit {
       error => { this.alertService.error(error); }
     );
   }
-
-  
 
 }

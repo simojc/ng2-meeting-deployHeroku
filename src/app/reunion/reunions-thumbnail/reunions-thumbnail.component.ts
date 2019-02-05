@@ -22,15 +22,14 @@ export class ReunionsThumbnailComponent implements OnInit {
   _evnmt: IEvnmt;
 
   today: string;
-
-  // now = new Date;
+  now: Date = new Date();
 
   constructor(private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-      const now: Date = new Date();
-      this.today = now.toISOString();
+      // const now: Date = new Date();
+      this.today = this.now.toISOString();
   }
 
   @Input()
@@ -40,6 +39,28 @@ export class ReunionsThumbnailComponent implements OnInit {
 
   get evnmt() {
     return this._evnmt;
+  }
+
+  datecompare(date1, date2) {
+    const day1 = date1.getDate();
+    const mon1 = date1.getMonth();
+    const year1 = date1.getFullYear();
+    const day2 = date2.getDate();
+    const mon2 = date2.getMonth();
+    const year2 = date2.getFullYear();
+
+    if (year1 > year2) {
+      return true;
+    }
+    else if (year1 === year2 && mon1 > mon2) {
+      return true;
+    }
+    else if (year1 === year2 && mon1 === mon2 && day1 > day2) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
 }
