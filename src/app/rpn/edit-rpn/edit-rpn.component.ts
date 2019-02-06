@@ -11,7 +11,6 @@ import { Local } from 'protractor/built/driverProviders';
 @Component({
   selector: 'rpn-edit',
   templateUrl: './edit-rpn.component.html',
-  styleUrls: ['./edit-rpn.component.css']
 })
 export class EditRpnComponent implements OnInit {
   rpnpers: any;
@@ -32,9 +31,9 @@ export class EditRpnComponent implements OnInit {
 
    ngOnInit() {
     this.route.params.subscribe(params => {
-       //  console.log("params['id'] = " + params['id']);
+         // console.log("params['id'] = " + params['id']);
       this.rpnpersService.getById(params['id']).subscribe(res => {
-        // console.log( ' ds ngOnInit ; res.data = ' +  JSON.stringify(res)) ;
+         // console.log( ' ds ngOnInit ; res.data = ' +  JSON.stringify(res)) ;
         this.rpnpers = res[0];
         // console.log(' ds ngOnInit ; this.rpnpers = ' +  JSON.stringify(this.rpnpers)) ;
       });
@@ -77,11 +76,11 @@ export class EditRpnComponent implements OnInit {
   }
 
    private loadPersonnes() {
-    this.persService.getAll().subscribe(
+    this.persService.getPers().subscribe(
       res => {
         // console.log(" loadPersonnes res = "+  JSON.stringify(res)) 
       this.personnes = res;
-      // console.log(" loadPersonnes this.personnes = "+  JSON.stringify(this.personnes)) 
+       // console.log(" loadPersonnes this.personnes = "+  JSON.stringify(this.personnes)) 
      },
       error => { this.alertService.error(error); }
     );
