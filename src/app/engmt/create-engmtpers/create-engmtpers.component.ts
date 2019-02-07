@@ -69,7 +69,7 @@ export class CreateEngmtPersComponent implements OnInit {
   }
 
   private loadPersonnes() {
-    this.persService.getAll().subscribe(
+    this.persService.getPers().subscribe(
       res => { this.personnes = res; },
       error => { this.alertService.error(error); }
     );

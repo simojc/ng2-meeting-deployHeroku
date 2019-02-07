@@ -63,11 +63,10 @@ export class CreateTontPersComponent implements OnInit {
       descr: undefined,
     };
     this.tontService.create(tontpers);
-    // this.router.navigate(['/']);
   }
 
   private loadPersonnes() {
-    this.persService.getAll().subscribe(
+    this.persService.getPers().subscribe(
       res => { this.personnes = res; },
       error => { this.alertService.error(error); }
     );

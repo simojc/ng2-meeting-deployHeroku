@@ -81,7 +81,7 @@ export class EditEngmtComponent implements OnInit {
   }
 
    private loadPersonnes() {
-    this.persService.getAll().subscribe(
+    this.persService.getPers().subscribe(
       res => {
         // console.log(" loadPersonnes res = "+  JSON.stringify(res)) 
       this.personnes = res;
