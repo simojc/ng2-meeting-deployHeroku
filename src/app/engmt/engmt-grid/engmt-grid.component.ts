@@ -14,7 +14,7 @@ export class EngmtGridComponent implements OnInit {
     engmnts: IEngmt;
     public endDate: any;
     // array of all items to be paged
-    private allItems: any[] = [];
+    public allItems: any[] = [];
     // pager object
     pager: any = {};
     // paged items

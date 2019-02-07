@@ -13,11 +13,12 @@ export class HomeComponent implements OnInit {
     currentUser: IUser;
     users: IUser[] = [];
     // array of all items to be paged
-    private allItems: any[] = [];
+    public allItems: any[] = [];
     // pager object
     pager: any = {};
     // paged items
     pagedItems: any[];
+    public searchString: string;
 
     constructor(private userService: UserService, private router: Router,
         private alertService: AlertService, private pagerService: PagerService) {

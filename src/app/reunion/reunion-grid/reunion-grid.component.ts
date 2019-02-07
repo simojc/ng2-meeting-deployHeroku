@@ -18,7 +18,7 @@ export class ReunionGridComponent implements OnInit {
     today: string;
 
     // array of all items to be paged
-    private allItems: any[] = [];
+    public allItems: any[] = [];
     // pager object
     pager: any = {};
     // paged items

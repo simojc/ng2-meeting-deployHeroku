@@ -14,7 +14,7 @@ export class RpnpersComponent implements OnInit {
     currentUser: IUser;
     currentPers: IPers;
     // array of all items to be paged
-    private allItems: any[] = [];
+    public allItems: any[] = [];
     // pager object
     pager: any = {};
     // paged items
