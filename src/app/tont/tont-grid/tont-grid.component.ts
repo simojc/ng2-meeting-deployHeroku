@@ -16,9 +16,7 @@ export class TontGridComponent implements OnInit {
     currentUser: IUser;
     tontpers: ITontpers[] = [];
     tontines: ITont[];
-   // angForm: FormGroup;
     tont_id = -1;
-    // array of all items to be paged
     private allItems: any[] = [];
     // pager object
     pager: any = {};

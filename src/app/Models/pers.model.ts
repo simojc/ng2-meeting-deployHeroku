@@ -23,6 +23,6 @@ export const TypePers = [
   { "code": 'M', "libelle": 'Membre' },
   { "code": 'E', "libelle": 'Enfant du membre' },
   { "code": 'P', "libelle": 'Parent du membre' },
-  { "code": 'A', "libelle": 'Ammi du membre' },
+  { "code": 'A', "libelle": 'Ami du membre' },
   { "code": 'C', "libelle": 'Conjoint du membre' },
 ];

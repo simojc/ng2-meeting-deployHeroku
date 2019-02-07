@@ -43,7 +43,7 @@ export class PersService {
       }
 
       getPers(): Observable<IPers[]> {
-        console.log(this.endpointUrl + 'pers?groupe=' + this.currentUser.groupe_id);
+        // console.log(this.endpointUrl + 'pers?groupe=' + this.currentUser.groupe_id);
         return this.http.get(this.endpointUrl + 'pers?groupe=' + this.currentUser.groupe_id, this.httpOptions)
         .map((response: Response) => <IPers[]>response.json())
         .catch(this.handleError);

@@ -1,13 +1,20 @@
 <div>
     <div>
-      <h1 class="panel-title"> Les adhésions RPN </h1>
+      <h3 class="panel-title"> Les adhésions RPN </h3>
     </div>
     <form>
-        <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-                <input type="text" class="form-control" name="searchString" placeholder=" Chercher par Nom et prénom" [(ngModel)]="searchString">
-            </div>
+                <div class=" col-md-4 "> 
+                  <input type="text" class="form-control" name="searchString" placeholder=" Filtrer par Nom et prénom" [(ngModel)]="searchString">
+                </div> 
+           
+            <div  *ngIf="this.currentUser?.admin" align="right">
+                <button type="button" class="btn btn-primary"
+                        (click)="add()">
+                  Ajouter
+                </button>
+              </div>
         </div>
     </form>
 
@@ -23,7 +30,7 @@
         </tr>
       </thead>         
   
-      <tr *ngFor="let item of pagedItems | filter : 'nom_pers' : searchString; let i = index  ">
+      <tr *ngFor="let item of allItems | filter : 'nom_pers' : searchString; let i = index  ">
         <td>{{item.nom_pers}}</td>
         <td>{{item.mtrle}}</td>
         <td>{{item.dtadh | date: 'dd/MM/yyyy'}}</td>
@@ -40,7 +47,7 @@
     </table>
   
       <!-- pager -->
-  <div align = "right">
+<!--   <div align = "right">
       <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
         <li [ngClass]="{disabled:pager.currentPage === 1}">
           <a [routerLink]=""  (click)="setPage(1)">premier</a>
@@ -58,13 +65,8 @@
           <a [routerLink]="" (click)="setPage(pager.totalPages)"> Dernier </a>
         </li>
       </ul>
-    </div>
+    </div> -->
     <!-- End  pager -->
   </div>
 
-  <div  *ngIf="this.currentUser?.admin" align="left">
-      <button type="button" class="btn btn-primary"
-              (click)="add()">
-        Ajouter
-      </button>
-    </div>
+

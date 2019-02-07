@@ -25,11 +25,7 @@ export class UserService {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
-/*     constructor(private http: Http, private httpClient: HttpClient, private auth: AuthService, private autresService: AutresService) {
-    } */
-    // private endpointUrl = environment.API_URL;
     private endpointUrl = environment.API_URL_NODEJS; // prob de CORS en dev.
-
 
     getUsers(): Observable<IUser[]> {
         const token = this.auth.getToken();
@@ -40,7 +36,7 @@ export class UserService {
             })
         };
        // console.log('URL = ' + this.endpointUrl + 'users');
-        return this.http.get(this.endpointUrl + 'users', httpOptions)
+        return this.http.get(this.endpointUrl + 'users?groupe=' + this.currentUser.groupe_id, httpOptions)
             .map((response: Response) => <IUser[]>response.json())
             .catch(this.handleError);
     }
@@ -49,9 +45,6 @@ export class UserService {
         return Observable.throw(error);
     }
 
-  /*   getById(_id: string) {
-        return this.http.get(this.endpointUrl + 'users/' + _id);
-    } */
     getById(_id: number) {
         return this.http.get(this.endpointUrl + 'users/' + _id, this.httpOptions)
         .map((response: Response) => <IUser>response.json())

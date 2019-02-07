@@ -66,8 +66,6 @@ export class EditRpnComponent implements OnInit {
       mtrle: formValues.mtrle,
       depot: formValues.depot,
       dtmajdpt: formValues.dtmajdpt,
-      // dtmajdpt: this.toApiDate (formValues.dtmajdpt),
-     // dtmajdpt: new DatePipe().transform(formValues.dtmajdpt, 'yyyy-MM-dd'),
     };
     this.rpnpersService.updateRpnpers(rpnpers, params['id']);
     this.router.navigate(['rpn']);
