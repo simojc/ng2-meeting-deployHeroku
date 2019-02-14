@@ -6,7 +6,7 @@
             <div class="input-group">
                 <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
                 <div class=" col-md-4 "> 
-                  <input type="text" class="form-control" name="searchString" placeholder=" Filtrer par Nom et prénom" [(ngModel)]="searchString">
+                  <input type="text" class="form-control" name="listFilter" placeholder=" Filtrer par Nom et prénom" [(ngModel)]="listFilter">
                 </div> 
            
             <div  *ngIf="this.currentUser?.admin" align="right">
@@ -30,7 +30,7 @@
         </tr>
       </thead>         
   
-      <tr *ngFor="let item of allItems | filter : 'nom_pers' : searchString; let i = index  ">
+      <tr *ngFor="let item of filteredRpnpers ">
         <td>{{item.nom_pers}}</td>
         <td>{{item.mtrle}}</td>
         <td>{{item.dtadh | date: 'dd/MM/yyyy'}}</td>

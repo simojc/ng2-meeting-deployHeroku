@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IUser, IRpnpers, IPers } from '../../Models/index';
+import { IUser, IRpnpers, IPers, IRpnpers2 } from '../../Models/index';
 // import { UserService } from '../user.service';
 import { AlertService, RpnpersService, AutresService, PagerService } from '../../_services/index';
 
@@ -13,13 +13,24 @@ import { AlertService, RpnpersService, AutresService, PagerService } from '../..
 export class RpnGridComponent implements OnInit {
     currentUser: IUser;
     currentPers: IPers;
-    // array of all items to be paged
-    public allItems: any[] = [];
-    // pager object
-    pager: any = {};
-    // paged items
-    pagedItems: any[];
-    public searchString: string;
+
+    filteredRpnpers: any[];
+    rpnpers: any[] = [];
+
+  _listFilter: string;
+  get listFilter(): string {
+      return this._listFilter;
+  }
+  set listFilter(value: string) {
+      this._listFilter = value;
+      this.filteredRpnpers = this.listFilter ? this.performFilter(this.listFilter) : this.rpnpers;
+  }
+
+  performFilter(filterBy: string): IRpnpers[] {
+      filterBy = filterBy.toLocaleLowerCase();
+      return this.rpnpers.filter((rpnpers: any) =>
+      rpnpers.nom_pers.toLocaleLowerCase().indexOf(filterBy) !== -1 );
+  }
 
     constructor(private alertService: AlertService, private rpnpersService: RpnpersService,
         private autresService: AutresService, private router: Router, private pagerService: PagerService) {
@@ -43,20 +54,12 @@ export class RpnGridComponent implements OnInit {
         if (!!this.currentPers) {
             this.rpnpersService.getAllRpnGroupe(this.currentUser.groupe_id).subscribe(
                 rpnpers => {
-                    this.allItems = rpnpers;
-                    this.setPage(1);
+                    this.rpnpers = rpnpers;
+                    this.filteredRpnpers = rpnpers;
                 },
                 error => { this.alertService.error(error); }
             );
         }
-    }
-
-    // Nouveau  code pour pagination
-    setPage(page: number) {
-        // get pager object from service
-        this.pager = this.pagerService.getPager(this.allItems.length, page);
-        // get current page of items
-        this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
 
     Edit(id) {

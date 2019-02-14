@@ -68,7 +68,7 @@ export class EditRpnComponent implements OnInit {
       dtmajdpt: formValues.dtmajdpt,
     };
     this.rpnpersService.updateRpnpers(rpnpers, params['id']);
-    this.router.navigate(['rpn']);
+    this.router.navigate(['rpngrid']);
     });
 
   }
@@ -85,6 +85,6 @@ export class EditRpnComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['rpn']);
+    this.router.navigate(['rpngrid']);
   }
 }

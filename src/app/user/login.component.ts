@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(formValues.email, formValues.password)
       .then(
       res => {
-        location.reload();
+         location.reload();
         this.router.navigate(['/user/profile']);
          /// this.alertService.success(' login complété avec sussès', true);
         this.loading = false;
@@ -55,6 +55,20 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       });
   }
+
+/*   login_timer (email_username: string, password: string) {
+    const params = {
+      email_username: email_username,
+      password: password
+    };
+    return this.http.post(AppSettings.API_ENDPOINT + '/auth/login', JSON.stringify(params), {headers: this.headers})
+      .map((res) => {
+        localStorage.setItem('token', res.json().token);
+        const time_to_login = Date.now() + 604800000; // one week
+        localStorage.setItem('timer', JSON.stringify(time_to_login));
+        return res;
+      });
+  } */
 
   createuser() {
     this.router.navigate(['user/createuser']);

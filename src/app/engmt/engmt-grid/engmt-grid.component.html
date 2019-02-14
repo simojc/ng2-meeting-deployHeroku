@@ -9,18 +9,15 @@
         </tr>
         <tr>
             <th>
-
                 <div col-md-6>
                     <!--  <label class="input-group-addon"> Selectionner un engagement </label> -->
-                    <select class="form-control" name="tont_id" #tont_id (change)="selectchange($event)">
+                    <select class="form-control" name="engmt_id" #engmt_id (change)="selectchange($event)">
                         <option disabled hidden [selected]="true" [value]="-1">Choisir un engagement</option>
                         <option *ngFor="let engmnt of engmnts" value={{engmnt.id}}>
                             {{engmnt.nom}} {{engmnt.mont_unit}}
                         </option>
                     </select>
-
                 </div>
-
             </th>
 
             <th>
@@ -28,8 +25,8 @@
                 <div class="input-group" col-md-6>
                     <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
                     <!--  <input type="text" class="form-control" name="searchString" placeholder=" Filtre par nom" [(ngModel)]="searchString"> -->
-                    <input type="text" class="form-control" name="searchString" placeholder=" Filtrer par nom et prénom"
-                        [(ngModel)]="searchString">
+                    <input type="text" class="form-control" name="listFilter" placeholder=" Filtrer par ...."
+                        [(ngModel)]="listFilter">
                 </div>
             </th>
             <th></th>
@@ -64,7 +61,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of pagedItems | filter : 'nom_prenom' : searchString; let i = index ">
+            <tr *ngFor="let item of filteredEngmtpers ">
                 <td>{{item.nom_engmt }}&nbsp; &nbsp; {{ item.mont_unit | currency}} </td>
                 <td>{{item.periode}} </td>
                 <td>{{item.nom_prenom}} </td>
@@ -83,7 +80,7 @@
     </table>
 
     <!-- pager -->
-    <div align="right">
+<!--     <div align="right">
         <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
             <li [ngClass]="{disabled:pager.currentPage === 1}">
                 <a [routerLink]="" (click)="setPage(1)">premier</a>
@@ -101,7 +98,7 @@
                 <a [routerLink]="" (click)="setPage(pager.totalPages)"> Dernier </a>
             </li>
         </ul>
-    </div>
+    </div> -->
     <!-- End  pager -->
 
 </div>

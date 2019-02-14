@@ -45,7 +45,7 @@ import {
         EditReuniondtlComponent,
     } from './reunion/index';
 
-    import { FilterPipe, SortGridPipe, DateRangePipe } from './_directives/search-by-filter.pipe';
+    import { FilterPipe,  DateRangePipe } from './_directives/search-by-filter.pipe';
 
 import {
   ToastrService,
@@ -96,8 +96,9 @@ registerLocaleData(localeFr, 'fr');
   declarations: [
     AppComponent,
     NavBarComponent,
+    // SearchPipe,
     FilterPipe,
-    SortGridPipe,
+    // SortGridPipe,
     DateRangePipe,
     Error404Component,
     CollapsibleWellComponent,

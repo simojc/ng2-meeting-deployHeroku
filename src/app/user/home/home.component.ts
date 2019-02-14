@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
     currentUser: IUser;
-    users: IUser[] = [];
     // array of all items to be paged
     public allItems: any[] = [];
     // pager object
@@ -20,11 +19,31 @@ export class HomeComponent implements OnInit {
     pagedItems: any[];
     public searchString: string;
 
+    filteredUsers: IUser[];
+    users: IUser[] = [];
+
+    _listFilter: string;
+    get listFilter(): string {
+        return this._listFilter;
+    }
+    set listFilter(value: string) {
+        this._listFilter = value;
+        this.filteredUsers = this.listFilter ? this.performFilter(this.listFilter) : this.users;
+    }
+
+    performFilter(filterBy: string): IUser[] {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.users.filter((users: any) =>
+        users.name.toLocaleLowerCase().indexOf(filterBy) !== -1 );   // ||
+        // users.admin.toLocaleLowerCase().indexOf(filterBy) !== -1 );
+    }
+
     constructor(private userService: UserService, private router: Router,
         private alertService: AlertService, private pagerService: PagerService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         // console.log(this.currentUser)
     }
+
     ngOnInit() {
         this.loadAllUsers();
     }
@@ -32,12 +51,15 @@ export class HomeComponent implements OnInit {
     deleteUser(_id: string) {
         this.userService.delete(_id).subscribe(() => { this.loadAllUsers(); });
     }
+
     private loadAllUsers() {
         this.userService.getUsers().subscribe(
             users => {
                 this.users = users;
-                this.allItems = users;
-                this.setPage(1);
+                this.filteredUsers = users;
+               // this.allItems = users;
+               // this.setPage(1);
+               // console.log(" this.users = " + this.users );
             },
             error => { this.alertService.error(error); }
         );

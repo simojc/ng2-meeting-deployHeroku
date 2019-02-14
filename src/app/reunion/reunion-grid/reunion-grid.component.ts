@@ -17,20 +17,9 @@ export class ReunionGridComponent implements OnInit {
     public endDate: any;
     today: string;
 
-    // array of all items to be paged
-    public allItems: any[] = [];
-    // pager object
-    pager: any = {};
-    // paged items
-    pagedItems: any[];
-    public searchString: string;
-
     constructor(private evnmtService: EvnmtService, private router: Router,
         private alertService: AlertService, private pagerService: PagerService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        // this.startDate = new Date();
-       //  this.endDate = new Date();
-        // console.log(this.currentUser)
     }
     ngOnInit() {
         this.loadAllReunions();
@@ -45,10 +34,7 @@ export class ReunionGridComponent implements OnInit {
         this.evnmtService.getEvnmts().subscribe(
             evnmts => {
                 this.evnmts = evnmts;
-                this.allItems = evnmts;
-                this.setPage(1);
-               // console.log(" this.allItems = " + JSON.stringify(this.allItems));
-            },
+          },
             error => { this.alertService.error(error); }
         );
     }
@@ -56,15 +42,6 @@ export class ReunionGridComponent implements OnInit {
     EditReunion(id) {
          this.router.navigate(['/reunions/edit/', id]);
       }
-
-    // Nouveau  code pour pagination
-    setPage(page: number) {
-        // get pager object from service
-        this.pager = this.pagerService.getPager(this.allItems.length, page);
-        // get current page of items
-        this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-       // console.log(" this.pagedItems = " + JSON.stringify(this.pagedItems));
-    }
 
     add() {
         this.router.navigate(['/reunions/new']);

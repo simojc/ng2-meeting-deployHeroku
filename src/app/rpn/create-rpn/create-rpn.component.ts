@@ -57,8 +57,7 @@ export class CreateRpnComponent implements OnInit {
     this.rpnpersService.addRpnpers(rpnpers);
     // console.log('ds component: rpnpers = ' + JSON.stringify(rpnpers));
     this.saveNewRpnpers.emit();
-    // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-    this.router.navigate(['rpn']);
+    this.router.navigate(['rpngrid']);
   }
 
   private loadPersonnes() {
@@ -69,8 +68,7 @@ export class CreateRpnComponent implements OnInit {
   }
 
   cancel() {
-    // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-    this.router.navigate(['rpn']);
+    this.router.navigate(['rpngrid']);
   }
 
 }

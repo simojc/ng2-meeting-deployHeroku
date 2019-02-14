@@ -47,23 +47,39 @@ export class AuthService {
           // Really usefull. The app can't catch this in "(err)" closure
           reject((err.statusText || 'Impossible de contacter le serveur'));
           // This return is required to compile but unuseable in your app
+          console.log(JSON.stringify(err));
           return Observable.throw(err);
         })
         .subscribe(data => {
            localStorage.setItem('currentUser', JSON.stringify(data));
-          localStorage.setItem('token', JSON.stringify(data.token));
-          this.currentUser = data;
-          // console.log('currentUser : ' + JSON.stringify(this.currentUser));
-         //  console.log('token :' + JSON.parse(localStorage.getItem('token')));
+           localStorage.setItem('token', JSON.stringify(data.token));
+           this.currentUser = data;
+           // const time_to_login = Date.now() + 604800000; // one week
+           // console.log('Date.now() 1  : ' + Date.now() );
+           const time_to_login = Date.now() + 43200000; // en milliseconds correspond à 12 heures
+           localStorage.setItem('timer', JSON.stringify(time_to_login));
           resolve(data);
         });
     });
   }
 
+  /* login_timer (email_username: string, password: string) {
+    const params = {
+      email_username: email_username,
+      password: password
+    };
+    return this.http.post(AppSettings.API_ENDPOINT + '/auth/login', JSON.stringify(params), {headers: this.headers})
+      .map((res) => {
+        localStorage.setItem('token', res.json().token);
+        const time_to_login = Date.now() + 604800000; // one week
+        localStorage.setItem('timer', JSON.stringify(time_to_login));
+        return res;
+      });
+  } */
+
   public getToken(): string {
     return localStorage.getItem('token');
   }
-
 
   getGroupe(_id: number) {
     const url = environment.API_URL_NODEJS;
@@ -96,6 +112,14 @@ export class AuthService {
     }).subscribe();
   }
 
+
+  logout() {
+    this.currentUser = undefined;
+    localStorage.removeItem('currentUser');
+    // console.log(' Dans logout1() JSON.stringify(this.currentUser) = ' + JSON.stringify(this.currentUser))
+    // this.router.navigate(['user/login']);
+  }
+
   updateCurrentUser(email: string, admin: boolean) {
     this.currentUser.email = email;
     this.currentUser.admin = admin;
@@ -106,8 +130,8 @@ export class AuthService {
   }
 
   private handleError(error: Response) {
+    // console.log(' dans handleError error : ' + error);
     return Observable.throw(error);
   }
-
 
 }

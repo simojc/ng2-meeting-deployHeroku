@@ -14,21 +14,43 @@ import { Router } from '@angular/router';
 })
 export class TontGridComponent implements OnInit {
     currentUser: IUser;
-    tontpers: ITontpers[] = [];
+
     tontines: ITont[];
-    tont_id = -1;
+
     public allItems: any[] = [];
     // pager object
-    pager: any = {};
+   pager: any = {};
     // paged items
     pagedItems: any[];
-     public searchString: string;
+    // public searchString: string;
+
+
+    filteredTontpers: ITontpers[];
+    tontpers: ITontpers[] = [];
+
+    _listFilter: string;
+    get listFilter(): string {
+        return this._listFilter;
+    }
+    set listFilter(value: string) {
+        this._listFilter = value;
+        this.filteredTontpers = this.listFilter ? this.performFilter(this.listFilter) : this.tontpers;
+    }
+
+    performFilter(filterBy: string): ITontpers[] {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.tontpers.filter((tontpers: any) =>
+        tontpers.nom_prenom.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+        tontpers.alias.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+        tontpers.moisgain.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    }
 
     constructor(private tontService: TontService, private router: Router,
         private alertService: AlertService, private pagerService: PagerService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         // this.createForm();
     }
+
     ngOnInit() {
         this.loadTonts();
        // this.tont_id = -1;
@@ -41,7 +63,7 @@ export class TontGridComponent implements OnInit {
     private loadTonts() {
         this.tontService.getAllTonts().subscribe(
           res => { this.tontines = res;
-            this.tont_id = -1;
+           // this.tont_id = -1;
         },
           error => { this.alertService.error(error); }
         );
@@ -59,28 +81,22 @@ export class TontGridComponent implements OnInit {
         this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
         // console.log(" this.pagedItems = " + JSON.stringify(this.pagedItems));
     }
-/* 
-    createForm() {
-        this.angForm = this.fb.group({
-          tont_id: '',
-          searchString: '',
-        });
-      } */
 
-      add() {
-        this.router.navigate(['/tontpers/new']);
-      }
+    add() {
+           this.router.navigate(['/tontpers/new']);
+    }
 
     selectchange(args) {
         // const tont_Selected = args.target.value;
         const tontId = args.target.value;
-        // console.log('tontId = ' + tontId);
+         console.log('tontId = ' + tontId);
         this.tontService.getAllTontineurs(tontId).subscribe(
             tontpers => {
                 this.tontpers = tontpers;
-                this.allItems = tontpers;
-                this.setPage(1);
-                // console.log(" this.allItems = " + JSON.stringify(this.allItems));
+                this.filteredTontpers  = tontpers;
+               // this.allItems = tontpers;
+               // this.setPage(1);
+             // console.log(" this.filteredTontpers = " + JSON.stringify(this.filteredTontpers));
             },
             error => { this.alertService.error(error); }
         );

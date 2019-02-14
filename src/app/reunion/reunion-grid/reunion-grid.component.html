@@ -35,7 +35,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of allItems | dateRange: 'date' : startDate : endDate; let i = index ">
+            <tr *ngFor="let item of evnmts | dateRange: 'date' : startDate : endDate; let i = index ">
 
                 <td>{{item.nom}}</td>
                 <td>{{item.date | date:'fullDate'}}</td>
@@ -58,30 +58,4 @@
             </tr>
         </tbody>
     </table>
-
-    <!-- pager -->
-<!--     <div align="right">
-        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-            <li [ngClass]="{disabled:pager.currentPage === 1}">
-                <a (click)="setPage(1)">premier</a>
-            </li>
-            <li [ngClass]="{disabled:pager.currentPage === 1}">
-                <a (click)="setPage(pager.currentPage - 1)">Précédent</a>
-            </li>
-            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                <a (click)="setPage(page)">{{page}}</a>
-            </li>
-            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                <a (click)="setPage(pager.currentPage + 1)">Suivant</a>
-            </li>
-            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                <a (click)="setPage(pager.totalPages)">Dernier</a>
-            </li>
-        </ul>
-    </div> -->
-<!--     <div *ngIf="this.currentUser?.admin" align="left">
-        <button type="button" class="btn btn-primary" (click)=add()>
-            Ajouter
-        </button>
-    </div> -->
 </div>
