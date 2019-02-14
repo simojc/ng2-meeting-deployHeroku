@@ -25,7 +25,7 @@ import { Router } from '@angular/router';
 
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   private loading: boolean;
   email: any;
   password: any;
@@ -34,10 +34,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router,
     private alertService: AlertService) {
-  }
-
-  ngOnInit() {
-   // this.showConnexion = 1;
   }
 
   login(formValues) {
@@ -55,20 +51,6 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       });
   }
-
-/*   login_timer (email_username: string, password: string) {
-    const params = {
-      email_username: email_username,
-      password: password
-    };
-    return this.http.post(AppSettings.API_ENDPOINT + '/auth/login', JSON.stringify(params), {headers: this.headers})
-      .map((res) => {
-        localStorage.setItem('token', res.json().token);
-        const time_to_login = Date.now() + 604800000; // one week
-        localStorage.setItem('timer', JSON.stringify(time_to_login));
-        return res;
-      });
-  } */
 
   createuser() {
     this.router.navigate(['user/createuser']);
