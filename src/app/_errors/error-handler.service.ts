@@ -12,7 +12,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
       const alertService = this.injector.get(AlertService);
       console.log('URL: ' + router.url);
 
-     // console.log('error: ' + error);
+      console.log('error: ' + error);
 
       if (error instanceof HttpErrorResponse) {
           // Backend returns unsuccessful response codes such as 404, 500 etc.
