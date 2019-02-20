@@ -3,18 +3,19 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule } from '@angular/router';
 // import { CommonModule } from '@angular/common';
 import { AgGridModule } from 'ag-grid-angular/main';
 // import { DataTableModule } from './data-table';
+
 import { AppComponent } from './app.component';
 import { NavBarComponent  } from './nav/navbar.component';
 import { appRoutes } from './app.routes';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { AccueilComponent } from './accueil/index';
-
+// import { ErrorsModule } from './_errors';
 import {
   RpnpersService,
   PersService,
@@ -37,7 +38,7 @@ import {
         EvnmtDetailsComponent,
         ReuniondtllListComponent,
         CreateReuniondtlComponent,
-        ErrorInterceptorProvider, TokenInterceptor,
+      //  TokenInterceptor,
         AuthGuard,
         AlertComponent,
         FooterComponent,
@@ -77,14 +78,14 @@ import { EngmtComponent,
     EditEngmtComponent
    } from './engmt/index';
 
-// import { MyGridApplicationComponent } from './my-grid/my-grid.component'
-
-// import { DataTableDemo1, DataTableDemo2, DataTableDemo3, DatatableDemoComponent } from './data-table-demo/index';
-
-import { Error404Component } from './errors/404.component';
-
 import { AuthService } from './user/auth.service';
 import { UserService } from './user/user.service';
+
+import { GlobalErrorComponent,
+  PageNotFoundComponent,
+  GlobalErrorHandlerService,
+  ServerErrorsInterceptor
+} from './_errors/index';
 
 import {LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
@@ -100,7 +101,7 @@ registerLocaleData(localeFr, 'fr');
     FilterPipe,
     // SortGridPipe,
     DateRangePipe,
-    Error404Component,
+    // Error404Component,
     CollapsibleWellComponent,
     AlertComponent,
     FooterComponent,
@@ -135,6 +136,8 @@ registerLocaleData(localeFr, 'fr');
     EngmtGridComponent,
     EditEngmtComponent,
     AccueilComponent,
+    GlobalErrorComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -146,19 +149,20 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    // ErrorsModule,
   ],
   providers: [
     ToastrService,
     // EventListResolver,
     AuthService,
     UserService,
-     {
+     {
       provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-     },
-        ErrorInterceptorProvider,
+      useClass: ServerErrorsInterceptor,
+      multi: true,
+    },
+       // ErrorInterceptorProvider,
         AuthGuard,
         AlertService,
         AutresService,
@@ -171,7 +175,9 @@ registerLocaleData(localeFr, 'fr');
     EngmtService,
     EvnmtdtlService,
     PagerService,
-    {provide: LOCALE_ID, useValue: 'fr-CA' }
+    {provide: LOCALE_ID, useValue: 'fr-CA' },
+    GlobalErrorHandlerService,
+    { provide: ErrorHandler, useClass: GlobalErrorHandlerService }
   ],
   bootstrap: [AppComponent],
 

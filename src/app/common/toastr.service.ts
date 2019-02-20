@@ -1,7 +1,7 @@
 
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 
-declare let toastr:any
+declare let toastr: any
 
 @Injectable()
 export class ToastrService{

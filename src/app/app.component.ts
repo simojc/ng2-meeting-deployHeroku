@@ -20,8 +20,8 @@ export class AppComponent  implements OnInit {
   ngOnInit() {
     const timer = JSON.parse(localStorage.getItem('timer'));
     if (timer && (Date.now() > timer)) {
-      console.log('timer = :' + timer);
-      console.log('Date.now() = :' + Date.now());
+      // console.log('timer = :' + timer);
+      // console.log('Date.now() = :' + Date.now());
       this.auth.logout();
       this.router.navigate(['user/login']);
     }

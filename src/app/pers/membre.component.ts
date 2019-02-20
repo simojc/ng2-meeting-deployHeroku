@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { IUser } from '../Models/index';
+import { IUser, IPers } from '../Models/index';
 import { AlertService, PersService, PagerService } from '../_services/index';
 
 @Component({
@@ -11,14 +11,25 @@ import { AlertService, PersService, PagerService } from '../_services/index';
 
 export class MembreComponent implements OnInit {
   currentUser: IUser;
-  // array of all items to be paged
-  public allItems: any[] = [];
-  // pager object
-  pager: any = {};
-  // paged items
-  pagedItems: any[];
+  filteredPers: any[];
+  pers: any[] = [];
 
-  public searchString: string;
+  _listFilter: string;
+  get listFilter(): string {
+      return this._listFilter;
+  }
+  set listFilter(value: string) {
+      this._listFilter = value;
+      this.filteredPers = this.listFilter ? this.performFilter(this.listFilter) : this.pers;
+  }
+
+  performFilter(filterBy: string): IPers[] {
+      filterBy = filterBy.toLocaleLowerCase();
+      return this.pers.filter((pers: any) =>
+      pers.nom_pers.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+      pers.email.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+      pers.type.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
 
   constructor(private alertService: AlertService, private persService: PersService,
     private router: Router, private pagerService: PagerService) {
@@ -32,8 +43,8 @@ export class MembreComponent implements OnInit {
   private loadMembers() {
     this.persService.getMembres().subscribe(
       pers => {
-        this.allItems = pers;
-        this.setPage(1);
+        this.pers = pers;
+        this.filteredPers = pers;
       },
       error => { this.alertService.error(error); }
     );
@@ -48,11 +59,11 @@ export class MembreComponent implements OnInit {
   }
 
   // Nouveau  code pour pagination
-  setPage(page: number) {
+/*   setPage(page: number) {
     // get pager object from service
     this.pager = this.pagerService.getPager(this.allItems.length, page);
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-  }
+  } */
 
 }

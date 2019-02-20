@@ -3,10 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertService, EngmtService, AutresService, PersService} from '../../_services/index';
 import { IEngmtpers, IEngmt, IPers, IUser } from '../../Models/index';
-import { DatePipe } from '@angular/common';
-import { Pipe, PipeTransform } from '@angular/core';
-import { Local } from 'protractor/built/driverProviders';
-
 
 @Component({
   selector: 'engmt-edit',

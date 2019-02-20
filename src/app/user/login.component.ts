@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { AlertService } from '../_services/index';
 import { Router } from '@angular/router';
+import { error } from 'util';
 
 @Component({
 
@@ -37,18 +38,12 @@ export class LoginComponent {
   }
 
   login(formValues) {
-    this.loading = true;
     this.authService.login(formValues.email, formValues.password)
       .then(
       res => {
          location.reload();
         this.router.navigate(['/user/profile']);
          /// this.alertService.success(' login complété avec sussès', true);
-        this.loading = false;
-      },
-      err => {
-        this.alertService.error(err);
-        this.loading = false;
       });
   }
 

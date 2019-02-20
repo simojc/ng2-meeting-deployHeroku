@@ -32,7 +32,7 @@ export class PersGridComponent implements OnInit {
   }
 
   constructor(private alertService: AlertService, private persService: PersService,
-    private router: Router, private pagerService: PagerService) {
+    private router: Router) {
     }
 
   ngOnInit() {

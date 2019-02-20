@@ -12,7 +12,7 @@ import {
   EditReuniondtlComponent
 } from './reunion/index';
 
-import { Error404Component } from './errors/404.component';
+// import { Error404Component } from './errors/404.component_old';
 
 import { AuthGuard } from './_guards/index';
 
@@ -45,8 +45,12 @@ import { EngmtComponent,
     EngmtGridComponent, EditEngmtComponent
  } from './engmt/index';
 
+ import { GlobalErrorComponent,
+   PageNotFoundComponent
+} from './_errors/index';
+
 export const appRoutes = [
-  { path: '404', component: Error404Component },
+  // { path: '404', component: Error404Component },
   { path: '', redirectTo: '/accueil', pathMatch: 'full' },
  //  { path: '/', redirectTo: '/accueil', pathMatch: 'full' },
   { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
@@ -81,5 +85,9 @@ export const appRoutes = [
   { path: 'engmtpers/new', component: CreateEngmtPersComponent, canActivate: [AuthGuard]  },
   { path: 'engmtpersgrid', component: EngmtGridComponent , canActivate: [AuthGuard] },
   { path: 'tontpersgrid', component: TontGridComponent , canActivate: [AuthGuard] },
+
+  { path: 'error', component: GlobalErrorComponent },
+  { path: '**', component: PageNotFoundComponent }
+  // { path: '**', component: GlobalErrorComponent, data: { error: 404 } },
 
 ];

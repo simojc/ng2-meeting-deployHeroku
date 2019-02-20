@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { IUser, IGroupe } from '../Models/index';
 import { JwtHelperService } from '@auth0/angular-jwt';
+ import { AlertService } from '../_services/alert.service';
 
 @Injectable()
 export class AuthService {
@@ -23,7 +24,7 @@ export class AuthService {
 
   // private endpointUrl = environment.API_URL;
   private endpointUrl = environment.API_URL_NODEJS + 'users/';
-  constructor(private http: Http, private http_cli: HttpClient) { }
+  constructor(private alertService: AlertService, private http: Http, private http_cli: HttpClient) { }
 
   addUser(user) {
     const uri = this.endpointUrl + 'register';
@@ -46,9 +47,8 @@ export class AuthService {
           console.log((err.statusText || 'Impossible de contacter le serveur'));
           // Really usefull. The app can't catch this in "(err)" closure
           reject((err.statusText || 'Impossible de contacter le serveur'));
-          // This return is required to compile but unuseable in your app
-          console.log(JSON.stringify(err));
-          return Observable.throw(err);
+
+           return Observable.throw(err);
         })
         .subscribe(data => {
            localStorage.setItem('currentUser', JSON.stringify(data));

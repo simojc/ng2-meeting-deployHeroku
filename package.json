@@ -29,6 +29,7 @@
     "ag-grid-angular": "^17.0.0",
     "bootstrap": "^3.3.6",
     "core-js": "^2.4.1",
+    "error-stack-parser": "^2.0.2",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "ng2-currency-mask": "^5.3.1",
