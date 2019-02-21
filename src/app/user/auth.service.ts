@@ -7,14 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { IUser, IGroupe } from '../Models/index';
 import { JwtHelperService } from '@auth0/angular-jwt';
- import { AlertService } from '../_services/alert.service';
+import { AlertService } from '../_services/alert.service';
 
 @Injectable()
 export class AuthService {
-
   public currentUser: IUser;
   token = this.getToken();
-
   httpOptions = {
      headers: new Headers({
          'Content-Type': 'application/json',
@@ -25,7 +23,6 @@ export class AuthService {
   // private endpointUrl = environment.API_URL;
   private endpointUrl = environment.API_URL_NODEJS + 'users/';
   constructor(private alertService: AlertService, private http: Http, private http_cli: HttpClient) { }
-
   addUser(user) {
     const uri = this.endpointUrl + 'register';
     this.http.post(uri, user).subscribe(
@@ -47,7 +44,7 @@ export class AuthService {
           console.log((err.statusText || 'Impossible de contacter le serveur'));
           // Really usefull. The app can't catch this in "(err)" closure
           reject((err.statusText || 'Impossible de contacter le serveur'));
-
+          // this.alertService.error(error.error);
            return Observable.throw(err);
         })
         .subscribe(data => {
@@ -62,20 +59,6 @@ export class AuthService {
         });
     });
   }
-
-  /* login_timer (email_username: string, password: string) {
-    const params = {
-      email_username: email_username,
-      password: password
-    };
-    return this.http.post(AppSettings.API_ENDPOINT + '/auth/login', JSON.stringify(params), {headers: this.headers})
-      .map((res) => {
-        localStorage.setItem('token', res.json().token);
-        const time_to_login = Date.now() + 604800000; // one week
-        localStorage.setItem('timer', JSON.stringify(time_to_login));
-        return res;
-      });
-  } */
 
   public getToken(): string {
     return localStorage.getItem('token');
@@ -111,7 +94,6 @@ export class AuthService {
       }
     }).subscribe();
   }
-
 
   logout() {
     this.currentUser = undefined;
