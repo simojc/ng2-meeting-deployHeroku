@@ -24,7 +24,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
          // const plainText = error['_body'].replace(/<[^>]*>/g, '');   // .text().replace(/<[^>]*>/g, '');
          // console.log('plainText = ' + plainText);
       }
-      router.navigate(['/error']);
+     // router.navigate(['/error']);
     }
 }
 

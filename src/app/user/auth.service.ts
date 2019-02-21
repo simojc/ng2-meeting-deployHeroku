@@ -41,10 +41,13 @@ export class AuthService {
         // This catch is very powerfull, it can catch all errors
         .catch((err: Response) => {
           // The err.statusText is empty if server down (err.type === 3)
-          console.log((err.statusText || 'Impossible de contacter le serveur'));
+          console.log((err.text() || 'Impossible de contacter le serveur'));
           // Really usefull. The app can't catch this in "(err)" closure
           reject((err.statusText || 'Impossible de contacter le serveur'));
           // this.alertService.error(error.error);
+           const plainText = err.text().replace(/<[^>]*>/g, '');   // .text().replace(/<[^>]*>/g, '');
+          console.log('plainText = ' + plainText);
+          this.alertService.error(plainText);
            return Observable.throw(err);
         })
         .subscribe(data => {
